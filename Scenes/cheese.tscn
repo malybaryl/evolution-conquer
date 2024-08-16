@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://6csuchnxxyp3"]
+
+[ext_resource type="Texture2D" uid="uid://crcgfokepysmm" path="res://Assets/Objects/Cheese/png/cheese.png" id="1_ymdyx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jv3hk"]
+
+[node name="Cheese" type="Node2D"]
+scale = Vector2(0.34, 0.34)
+
+[node name="Area2D" type="Area2D" parent="." groups=["object"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(1, 1)
+texture = ExtResource("1_ymdyx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(10.67, 10.67)
+shape = SubResource("CircleShape2D_jv3hk")
