@@ -19,3 +19,4 @@ config/icon="res://icon.svg"
 
 object=""
 player=""
+enemy=""

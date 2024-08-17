@@ -1,13 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://rkepq807vxe5"]
+[gd_scene load_steps=6 format=3 uid="uid://rkepq807vxe5"]
 
 [ext_resource type="PackedScene" uid="uid://bjvplfju3hcop" path="res://Scenes/game_menager.tscn" id="1_3bw84"]
 [ext_resource type="PackedScene" uid="uid://i70yk16ub7it" path="res://Scenes/player.tscn" id="1_008fx"]
 [ext_resource type="PackedScene" uid="uid://c425qsydicyp4" path="res://Scenes/background_water.tscn" id="1_rx08h"]
-[ext_resource type="PackedScene" uid="uid://6csuchnxxyp3" path="res://Scenes/cheese.tscn" id="3_l6r2p"]
+[ext_resource type="PackedScene" uid="uid://c6x2w71e5jrkh" path="res://Scenes/cheese_menager.tscn" id="2_2brmc"]
+[ext_resource type="PackedScene" uid="uid://dt61gdvf5vqk2" path="res://Scenes/enemies_generator.tscn" id="3_btjph"]
 
 [node name="MainScene" type="Node2D"]
 
 [node name="GameMenager" parent="." instance=ExtResource("1_3bw84")]
+
+[node name="CheeseMenager" parent="." instance=ExtResource("2_2brmc")]
+
+[node name="EnemiesGenerator" parent="." instance=ExtResource("3_btjph")]
+number_of_red_cells = 2
+interval_red_cells = 1
+number_of_yellow_cells = 2
+interval_yellow_cells = 1
+number_of_purple_cells = 2
+interval_purple_cells = 1
+number_of_blue_cells = 2
+interval_blue_cells = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -20,15 +33,3 @@ scale = Vector2(0.925, 0.925)
 
 [node name="Player" parent="." instance=ExtResource("1_008fx")]
 scale = Vector2(0.34, 0.342742)
-
-[node name="Cheese" parent="." instance=ExtResource("3_l6r2p")]
-position = Vector2(118, -361)
-
-[node name="Cheese2" parent="." instance=ExtResource("3_l6r2p")]
-position = Vector2(833, -341)
-
-[node name="Cheese3" parent="." instance=ExtResource("3_l6r2p")]
-position = Vector2(1036, 256)
-
-[node name="Cheese4" parent="." instance=ExtResource("3_l6r2p")]
-position = Vector2(277, 491)

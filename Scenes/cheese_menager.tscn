@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6x2w71e5jrkh"]
+
+[ext_resource type="Script" path="res://Scenes/cheese_menager.gd" id="1_gys0g"]
+
+[node name="CheeseMenager" type="Node"]
+script = ExtResource("1_gys0g")
+number_of_cheese = 10
+interval = 5
