@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4hgfsc54irw"]
+
+[ext_resource type="SpriteFrames" uid="uid://57n7vgr86f23" path="res://Animations/Characters/Fish_4/Fish_4_idle.tres" id="1_1witl"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_qibl0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_prmnq"]
+
+[node name="SpikedFish" type="CharacterBody2D" groups=["enemy", "fish"]]
+script = ExtResource("1_qibl0")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy", "fish"]]
+rotation = 1.57307
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+scale = Vector2(15.175, 15.175)
+shape = SubResource("CircleShape2D_prmnq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(-3, 10)
+scale = Vector2(0.92, 0.759999)
+sprite_frames = ExtResource("1_1witl")
+animation = &"idle"
+frame_progress = 0.456291

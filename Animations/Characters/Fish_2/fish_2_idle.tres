@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://b6pl71w2y2n8d"]
+
+[ext_resource type="Texture2D" uid="uid://rle34n5kxg2g" path="res://Assets/Characters/Fish/Fish_2/png/0.png" id="1_gmq3e"]
+[ext_resource type="Texture2D" uid="uid://da6oh1o2fwrxi" path="res://Assets/Characters/Fish/Fish_2/png/1.png" id="2_omyyl"]
+[ext_resource type="Texture2D" uid="uid://kb67c13lg18g" path="res://Assets/Characters/Fish/Fish_2/png/2.png" id="3_fmoec"]
+[ext_resource type="Texture2D" uid="uid://ocych8eqkvbt" path="res://Assets/Characters/Fish/Fish_2/png/3.png" id="4_w5ynv"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gmq3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_omyyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fmoec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w5ynv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]

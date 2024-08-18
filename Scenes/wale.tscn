@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://byvlusiho1apy"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_0w511"]
+[ext_resource type="SpriteFrames" uid="uid://cvopmmfmfkrqj" path="res://Animations/Characters/Fish_3/Fish_3_idle.tres" id="2_3ghp8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d4p68"]
+
+[node name="Wale" type="CharacterBody2D" groups=["enemy", "fish"]]
+script = ExtResource("1_0w511")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy", "fish"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+scale = Vector2(15.175, 15.175)
+shape = SubResource("CircleShape2D_d4p68")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(-3, 10)
+rotation = 1.57346
+scale = Vector2(0.879999, 0.679999)
+sprite_frames = ExtResource("2_3ghp8")
+animation = &"idle"
+frame_progress = 0.0499227

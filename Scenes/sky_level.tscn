@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbe5c3ln6hf5g"]
+
+[ext_resource type="PackedScene" uid="uid://3rvodiojsdr0" path="res://Scenes/game_menager_sky.tscn" id="1_ym331"]
+[ext_resource type="PackedScene" uid="uid://cmo1opgf7vim" path="res://Scenes/enemy_generator_sky.tscn" id="2_dccgh"]
+[ext_resource type="PackedScene" uid="uid://c6x2w71e5jrkh" path="res://Scenes/cheese_menager.tscn" id="2_vftue"]
+[ext_resource type="PackedScene" uid="uid://i70yk16ub7it" path="res://Scenes/player.tscn" id="4_4blit"]
+[ext_resource type="PackedScene" uid="uid://bobch5ho24sgl" path="res://Scenes/background_sky.tscn" id="5_mcrjx"]
+
+[node name="SkyLevel" type="Node2D"]
+
+[node name="GameMenagerSky" parent="." instance=ExtResource("1_ym331")]
+sky_level = true
+
+[node name="EnemyGeneratorSky" parent="." instance=ExtResource("2_dccgh")]
+
+[node name="CheeseMenager" parent="." instance=ExtResource("2_vftue")]
+height = 750
+height_negative = -2900
+sky_cheese = true
+
+[node name="background_sky" parent="." instance=ExtResource("5_mcrjx")]
+position = Vector2(17, -1068)
+
+[node name="Player" parent="." instance=ExtResource("4_4blit")]
+position = Vector2(6, -1061)
+scale = Vector2(0.34, 0.342742)
+space_level = true

@@ -1,0 +1,128 @@
+[gd_scene load_steps=10 format=3 uid="uid://csggchmcv1d16"]
+
+[ext_resource type="Script" path="res://mars.gd" id="1_wfbks"]
+[ext_resource type="Texture2D" uid="uid://d18c5g4usxr6l" path="res://Assets/Characters/Coments/comet_3/png/comer_3.png" id="2_wk87p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6idhn"]
+
+[sub_resource type="Animation" id="Animation_wrk4b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_g5xtb"]
+resource_name = "rotate"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.28319, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_0uir0"]
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.41409, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_x037l"]
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 0), Vector2(4, 66), Vector2(4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hk3um"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.28319, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8r46r"]
+_data = {
+"RESET": SubResource("Animation_wrk4b"),
+"rotate": SubResource("Animation_g5xtb"),
+"rotate_comet": SubResource("Animation_x037l"),
+"rotate_mars": SubResource("Animation_0uir0"),
+"rotate_moon": SubResource("Animation_hk3um")
+}
+
+[node name="Mars" type="CharacterBody2D"]
+script = ExtResource("1_wfbks")
+
+[node name="Area2D" type="Area2D" parent="." groups=["comet", "enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+scale = Vector2(15.175, 15.175)
+shape = SubResource("CircleShape2D_6idhn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(4, 22)
+rotation = -6.28319
+scale = Vector2(0.640002, 0.640002)
+texture = ExtResource("2_wk87p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
+libraries = {
+"": SubResource("AnimationLibrary_8r46r")
+}

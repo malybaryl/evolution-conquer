@@ -10,7 +10,6 @@ scale = Vector2(0.34, 0.34)
 [node name="Area2D" type="Area2D" parent="." groups=["object"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-scale = Vector2(1, 1)
 texture = ExtResource("1_ymdyx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp677glncyeg3"]
+
+[ext_resource type="SpriteFrames" uid="uid://i7dc4dinh68n" path="res://Animations/Objects/Sky Cheese/sky_Cheese.tres" id="1_0c3kk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qjtra"]
+
+[node name="SkyCheese" type="Node2D"]
+scale = Vector2(0.3, 0.3)
+
+[node name="Area2D" type="Area2D" parent="." groups=["object"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(10.67, 10.67)
+shape = SubResource("CircleShape2D_qjtra")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(37, -9)
+scale = Vector2(0.84, 0.84)
+sprite_frames = ExtResource("1_0c3kk")
+animation = &"idle"
+frame_progress = 0.908497

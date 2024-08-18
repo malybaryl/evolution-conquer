@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3rvodiojsdr0"]
+
+[ext_resource type="Script" path="res://Scripts/game_menager_sky.gd" id="1_m2nej"]
+
+[node name="GameMenagerSky" type="Node"]
+script = ExtResource("1_m2nej")

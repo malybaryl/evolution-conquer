@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://c1cit5r3ngn53"]
+
+[ext_resource type="Texture2D" uid="uid://dww2trpaeq1fw" path="res://Assets/Characters/Bird/Bird_4/png/0.png" id="1_ojibu"]
+[ext_resource type="Texture2D" uid="uid://khxx5c25y47v" path="res://Assets/Characters/Bird/Bird_4/png/1.png" id="2_4xsv8"]
+[ext_resource type="Texture2D" uid="uid://6ijawevybima" path="res://Assets/Characters/Bird/Bird_4/png/2.png" id="3_c5s08"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ojibu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4xsv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c5s08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4xsv8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]

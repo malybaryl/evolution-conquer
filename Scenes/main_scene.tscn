@@ -15,12 +15,20 @@
 [node name="EnemiesGenerator" parent="." instance=ExtResource("3_btjph")]
 number_of_red_cells = 2
 interval_red_cells = 1
-number_of_yellow_cells = 2
 interval_yellow_cells = 1
+number_of_yellow_cells = 2
 number_of_purple_cells = 2
 interval_purple_cells = 1
 number_of_blue_cells = 2
 interval_blue_cells = 1
+number_of_narvals = 3
+interval_narvals = 1
+number_of_rays = 3
+interval_ray = 1
+number_of_spiked_fish = 3
+interval_spiked_fish = 1
+number_of_wale = 3
+interval_wale = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

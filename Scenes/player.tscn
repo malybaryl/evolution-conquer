@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://i70yk16ub7it"]
+[gd_scene load_steps=25 format=3 uid="uid://i70yk16ub7it"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_osuoc"]
 [ext_resource type="Texture2D" uid="uid://d1gt57lehcawt" path="res://Assets/Characters/Cell/Cell_1/png/0.png" id="2_ws17x"]
@@ -7,6 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://b1qgabx08ghrx" path="res://Assets/Characters/Cell/Cell_1/png/2.png" id="4_wwd44"]
 [ext_resource type="Texture2D" uid="uid://d36gt3qlngq3d" path="res://Assets/Characters/Cell/Cell_1/png/3.png" id="5_iirov"]
 [ext_resource type="Texture2D" uid="uid://h4dug7mvlgu7" path="res://Assets/Characters/Cell/Cell_1/png/4.png" id="6_qxke7"]
+[ext_resource type="Texture2D" uid="uid://b63uue6rmm84q" path="res://Assets/Characters/Bird/Bird_2/png/0.png" id="8_01w5i"]
+[ext_resource type="Texture2D" uid="uid://b0dtj42l72jcr" path="res://Assets/Characters/Fish/Fish_1/png/0.png" id="8_jn1yd"]
+[ext_resource type="Texture2D" uid="uid://bj1bc5f4pp1fd" path="res://Assets/Characters/Fish/Fish_1/png/1.png" id="9_5r20x"]
+[ext_resource type="Texture2D" uid="uid://dib8picleinou" path="res://Assets/Characters/Bird/Bird_2/png/1.png" id="9_el7wl"]
+[ext_resource type="Texture2D" uid="uid://0w1cqnjlukbj" path="res://Assets/Characters/Fish/Fish_1/png/2.png" id="10_n4isk"]
+[ext_resource type="Texture2D" uid="uid://bw3s1vmxir4n0" path="res://Assets/Characters/Bird/Bird_2/png/2.png" id="10_xxxfj"]
+[ext_resource type="Texture2D" uid="uid://cpjkdchfvgtw2" path="res://Assets/Characters/Fish/Fish_1/png/3.png" id="11_fkipe"]
+[ext_resource type="Texture2D" uid="uid://cvk4po5qspg26" path="res://Assets/Characters/Coments/comet_1/png/coment_1.png" id="11_od5i3"]
+[ext_resource type="Texture2D" uid="uid://dmrprftfxrefa" path="res://Assets/Characters/Fish/Fish_1/png/4.png" id="12_oclo7"]
+[ext_resource type="Texture2D" uid="uid://conne0f2ognjd" path="res://Assets/Characters/Fish/Fish_1/png/5.png" id="13_trl5v"]
+[ext_resource type="Texture2D" uid="uid://mt3t8h4s7pxn" path="res://Assets/Characters/Fish/Fish_1/png/6.png" id="14_575mf"]
+[ext_resource type="Texture2D" uid="uid://3og2rvqal026" path="res://Assets/Characters/Fish/Fish_1/png/7.png" id="15_belto"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rvu37"]
 
@@ -34,10 +46,101 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 20.0,
+"texture": ExtResource("8_01w5i")
+}, {
+"duration": 2.0,
+"texture": ExtResource("9_el7wl")
+}, {
+"duration": 2.0,
+"texture": ExtResource("10_xxxfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_el7wl")
+}],
+"loop": true,
+"name": &"idle_bird",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_od5i3")
+}],
+"loop": true,
+"name": &"idle_comet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_jn1yd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5r20x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_n4isk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_fkipe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_oclo7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_trl5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_575mf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_belto")
+}],
+"loop": true,
+"name": &"idle_fish",
+"speed": 12.0
 }]
 
+[sub_resource type="Animation" id="Animation_m26th"]
+resource_name = "rotating"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.28319, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_3a631"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.56249]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_miwu5"]
+_data = {
+"RESET": SubResource("Animation_3a631"),
+"rotating": SubResource("Animation_m26th")
+}
+
 [node name="Player" type="Node2D"]
-scale = Vector2(0.34, 0.34)
 script = ExtResource("1_osuoc")
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
@@ -46,18 +149,53 @@ script = ExtResource("1_osuoc")
 scale = Vector2(15.175, 15.175)
 shape = SubResource("CircleShape2D_rvu37")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
-scale = Vector2(1, 1)
-sprite_frames = SubResource("SpriteFrames_gbe8t")
-animation = &"idle"
-frame = 4
-frame_progress = 0.753938
-
 [node name="Camera2D" type="Camera2D" parent="Area2D"]
 limit_left = -2750
 limit_top = -450
 limit_right = 2750
 limit_bottom = 700
 editor_draw_limits = true
+
+[node name="Camera2DFish" type="Camera2D" parent="Area2D"]
+zoom = Vector2(0.5, 0.5)
+limit_left = -2750
+limit_top = -2050
+limit_right = 2750
+limit_bottom = 700
+editor_draw_limits = true
+
+[node name="Camera2DSky1" type="Camera2D" parent="Area2D"]
+scale = Vector2(1, 1)
+limit_left = -2750
+limit_top = -2900
+limit_right = 2750
+limit_bottom = 750
+
+[node name="Camera2DSky2" type="Camera2D" parent="Area2D"]
+scale = Vector2(1, 1)
+zoom = Vector2(0.4, 0.4)
+limit_left = -2750
+limit_top = -2900
+limit_right = 2750
+limit_bottom = 750
+
+[node name="Camera2DSpace" type="Camera2D" parent="Area2D"]
+scale = Vector2(1, 1)
+zoom = Vector2(0.35, 0.35)
+limit_left = -3000
+limit_top = -2000
+limit_right = 3000
+limit_bottom = 2000
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+rotation = 1.56249
+scale = Vector2(1.09995, 1.09995)
+sprite_frames = SubResource("SpriteFrames_gbe8t")
+animation = &"idle_comet"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_miwu5")
+}
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

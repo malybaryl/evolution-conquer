@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0l46d2sgngwe"]
+
+[ext_resource type="Texture2D" uid="uid://errb6uu50qhm" path="res://Assets/Objects/Cosmic Cheese/png/Cosmic Cheese.png" id="1_i7vij"]
+[ext_resource type="Script" path="res://Scenes/space_cheese.gd" id="1_uc1c4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8si42"]
+
+[node name="SpaceCheese" type="Node2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_uc1c4")
+speed = 250.0
+
+[node name="Area2D" type="Area2D" parent="." groups=["object"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(16.6667, -40)
+texture = ExtResource("1_i7vij")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(10.67, 10.67)
+shape = SubResource("CircleShape2D_8si42")

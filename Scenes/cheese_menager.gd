@@ -1,6 +1,9 @@
 extends Node
 
 var Cheese_Scene = preload("res://Scenes/cheese.tscn")
+var Sky_cheese_Scene = preload("res://Scenes/sky_cheese.tscn")
+var Space_cheese_Scene = preload("res://Scenes/space_cheese.tscn")
+var game_menager
 
 @export var number_of_cheese: int
 @export var interval: int
@@ -9,7 +12,19 @@ var Cheese_Scene = preload("res://Scenes/cheese.tscn")
 @export var height = 700
 @export var height_negative = -450
 
+@export var sky_cheese = false
+@export var space_cheese = false
+
+var change_height = true
+
 func _ready() -> void:
+	if sky_cheese:
+		game_menager = get_node("/root/SkyLevel/GameMenager")
+	elif space_cheese:
+		game_menager = get_node("/root/SpaceLevel/GameMenagerSpace")
+	else:
+		game_menager = get_node("/root/MainScene/GameMenager")
+	
 	var cheese_number = 0
 		
 	if number_of_cheese - interval < 1:
@@ -21,11 +36,23 @@ func _ready() -> void:
 		init_cheese()
 		 
 func init_cheese():
+	var inistance
 	var position_x = randi_range(width_negative, width)
 	var position_y = randi_range(height_negative, height)
-	var inistance = Cheese_Scene.instantiate()
+	if not sky_cheese and not space_cheese:
+		inistance = Cheese_Scene.instantiate()
+	elif sky_cheese:
+		inistance = Sky_cheese_Scene.instantiate()
+		var animation = inistance.get_node("Area2D/AnimatedSprite2D")
+		animation.play("idle")
+	else:
+		inistance = Space_cheese_Scene.instantiate()
 	inistance.position.x = position_x
 	inistance.position.y = position_y 
 	add_child(inistance)
+	
+	if not sky_cheese and not space_cheese:
+		if game_menager.points > 99:
+			height_negative = -2050
 	
 	

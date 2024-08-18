@@ -4,9 +4,15 @@ var points = 0
 
 var player
 var cursor_texture
+var camera
+var enemy_generator
+
+var fish_level = true
 
 func _ready() -> void:
 	player = get_node("/root/MainScene/Player") 
+	camera = player.get_node("Area2D/Camera2D") as Camera2D
+	enemy_generator = get_node("/root/MainScene/EnemiesGenerator") 
 	
 	# coursor handling
 	cursor_texture = load("res://Assets/UI/Coursor/png/coursor.png")
@@ -21,3 +27,26 @@ func add_points(number_of_point):
 	else:
 		return
 	print("number of points: ", points)
+	
+	if points > 99 and fish_level == true:
+		transform_to_fish_level()
+		fish_level = false
+
+func transform_to_fish_level():
+	camera.limit_top = -2050
+	camera.zoom = Vector2(.5, .5)
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for enemy in enemies:
+		enemy.scale.x = .3
+		enemy.scale.y = .3
+	var player_animator = get_node("/root/MainScene/Player/Area2D/AnimatedSprite2D")
+	player_animator.play("idle_fish")
+	player.scale.x = .7
+	player.scale.y = .7
+	player.speed = 400
+	
+	enemy_generator.init_all_fish()
+	
+	print("fish level")
+	
+	

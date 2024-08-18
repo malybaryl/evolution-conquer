@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmo1opgf7vim"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_generator_sky.gd" id="1_cogtn"]
+
+[node name="EnemyGeneratorSky" type="Node"]
+script = ExtResource("1_cogtn")

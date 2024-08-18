@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3abpi5r577o6"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ap1j8"]
+[ext_resource type="SpriteFrames" uid="uid://cch1qhf818pqr" path="res://Animations/Characters/Bird_1/bird_1_idle.tres" id="2_njb2j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5glie"]
+
+[node name="BlackBird" type="CharacterBody2D"]
+script = ExtResource("1_ap1j8")
+
+[node name="Area2D" type="Area2D" parent="." groups=["bird", "enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+scale = Vector2(15.175, 15.175)
+shape = SubResource("CircleShape2D_5glie")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(2, -1.90735e-06)
+rotation = 1.5519
+scale = Vector2(0.637714, 0.757285)
+sprite_frames = ExtResource("2_njb2j")
+animation = &"idle"
+frame_progress = 0.166967
