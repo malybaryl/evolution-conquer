@@ -1,9 +1,12 @@
 extends Node
 
+var parent
+
 var Cheese_Scene = preload("res://Scenes/cheese.tscn")
 var Sky_cheese_Scene = preload("res://Scenes/sky_cheese.tscn")
 var Space_cheese_Scene = preload("res://Scenes/space_cheese.tscn")
 var game_menager
+@export var reload = true
 
 @export var number_of_cheese: int
 @export var interval: int
@@ -18,15 +21,10 @@ var game_menager
 var change_height = true
 
 func _ready() -> void:
-	if sky_cheese:
-		game_menager = get_node("/root/SkyLevel/GameMenager")
-	elif space_cheese:
-		game_menager = get_node("/root/SpaceLevel/GameMenagerSpace")
-	else:
-		game_menager = get_node("/root/MainScene/GameMenager")
+	parent = get_parent()
 	
 	var cheese_number = 0
-		
+	
 	if number_of_cheese - interval < 1:
 		cheese_number = randi_range(1, number_of_cheese + interval)
 	else:
@@ -34,7 +32,18 @@ func _ready() -> void:
 		
 	for x in range(cheese_number):
 		init_cheese()
-		 
+	
+func _process(delta: float) -> void:
+	if reload:
+		if sky_cheese:
+			game_menager = parent.get_node("GameMenager")
+		elif space_cheese:
+			game_menager = get_node("/root/SpaceLevel/GameMenagerSpace")
+		else:
+			game_menager = get_node("/root/MainScene/GameMenager")	
+		reload = false 
+		
+		
 func init_cheese():
 	var inistance
 	var position_x = randi_range(width_negative, width)
@@ -52,7 +61,8 @@ func init_cheese():
 	add_child(inistance)
 	
 	if not sky_cheese and not space_cheese:
-		if game_menager.points > 99:
-			height_negative = -2050
+		if game_menager != null:
+			if game_menager.points > 99:
+				height_negative = -2050
 	
 	

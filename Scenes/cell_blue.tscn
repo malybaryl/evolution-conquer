@@ -18,6 +18,8 @@ scale = Vector2(15.175, 15.175)
 shape = SubResource("CircleShape2D_k0563")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" groups=["enemy"]]
-position = Vector2(8, 9.99999)
+position = Vector2(19.6179, 3.77942)
+scale = Vector2(1.21547, 0.92129)
 sprite_frames = ExtResource("1_ohdn8")
 animation = &"idle"
+frame_progress = 0.137104

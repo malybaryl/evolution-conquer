@@ -16,9 +16,9 @@ scale = Vector2(15.175, 15.175)
 shape = SubResource("CircleShape2D_lqq8i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
-position = Vector2(27, 33)
+position = Vector2(67.3793, 46.4457)
 rotation = 1.57856
-scale = Vector2(0.799999, 0.76)
+scale = Vector2(1.15025, 1.09649)
 sprite_frames = ExtResource("2_b3xx2")
 animation = &"idle"
-frame_progress = 0.0795881
+frame_progress = 0.186734

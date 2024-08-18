@@ -21,4 +21,4 @@ rotation = 1.5519
 scale = Vector2(0.637714, 0.757285)
 sprite_frames = ExtResource("2_njb2j")
 animation = &"idle"
-frame_progress = 0.166967
+frame_progress = 0.99044

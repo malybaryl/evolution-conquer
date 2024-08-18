@@ -7,6 +7,7 @@
 
 [node name="SpikedFish" type="CharacterBody2D" groups=["enemy", "fish"]]
 script = ExtResource("1_qibl0")
+height_negative = -2050
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy", "fish"]]
 rotation = 1.57307

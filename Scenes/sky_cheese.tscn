@@ -1,11 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp677glncyeg3"]
+[gd_scene load_steps=7 format=3 uid="uid://cp677glncyeg3"]
 
 [ext_resource type="SpriteFrames" uid="uid://i7dc4dinh68n" path="res://Animations/Objects/Sky Cheese/sky_Cheese.tres" id="1_0c3kk"]
+[ext_resource type="Script" path="res://Scenes/sky_cheese.gd" id="1_o77dw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qjtra"]
 
+[sub_resource type="Animation" id="Animation_dmoao"]
+resource_name = "flying_cheese"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.733333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(33.3333, 40), Vector2(33.333, -53.333)]
+}
+
+[sub_resource type="Animation" id="Animation_c4bq2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(33.3333, 40)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6nlr7"]
+_data = {
+"RESET": SubResource("Animation_c4bq2"),
+"flying_cheese": SubResource("Animation_dmoao")
+}
+
 [node name="SkyCheese" type="Node2D"]
 scale = Vector2(0.3, 0.3)
+script = ExtResource("1_o77dw")
 
 [node name="Area2D" type="Area2D" parent="." groups=["object"]]
 
@@ -14,8 +53,13 @@ scale = Vector2(10.67, 10.67)
 shape = SubResource("CircleShape2D_qjtra")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
-position = Vector2(37, -9)
+position = Vector2(33.3333, 40)
 scale = Vector2(0.84, 0.84)
 sprite_frames = ExtResource("1_0c3kk")
 animation = &"idle"
-frame_progress = 0.908497
+frame_progress = 0.957985
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_6nlr7")
+}

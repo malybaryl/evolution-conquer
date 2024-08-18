@@ -2,16 +2,18 @@ extends Node
 
 var points = 0
 
+var parent
 var player
 var cursor_texture
 var camera
 var enemy_generator
 
 func _ready() -> void:
-	player = get_node("/root/SpaceLevel/Player") 
+	parent = get_parent()
+	player = parent.get_node("Player") 
 	camera = player.get_node("Area2D/Camera2DSpace") as Camera2D
 	camera.make_current()
-	enemy_generator = get_node("/root/SpaceLevel/EnemiesGeneratorSpace") 
+	enemy_generator = parent.get_node("EnemiesGeneratorSpace") 
 		
 	# coursor handling
 	cursor_texture = load("res://Assets/UI/Coursor/png/coursor.png")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://riw4rhj70po0"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_0jw7o"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_0jw7o")
+turn_on_second_level = true

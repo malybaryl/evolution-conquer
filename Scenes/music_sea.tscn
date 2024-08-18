@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c00e0cmqgrisc"]
+
+[ext_resource type="AudioStream" uid="uid://uvg2bc4cj07r" path="res://Assets/Music/sea.mp3" id="1_m0c23"]
+
+[node name="MusicSea" type="AudioStreamPlayer"]
+stream = ExtResource("1_m0c23")
+autoplay = true
+parameters/looping = true

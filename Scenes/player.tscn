@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://i70yk16ub7it"]
+[gd_scene load_steps=26 format=3 uid="uid://i70yk16ub7it"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_osuoc"]
 [ext_resource type="Texture2D" uid="uid://d1gt57lehcawt" path="res://Assets/Characters/Cell/Cell_1/png/0.png" id="2_ws17x"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://conne0f2ognjd" path="res://Assets/Characters/Fish/Fish_1/png/5.png" id="13_trl5v"]
 [ext_resource type="Texture2D" uid="uid://mt3t8h4s7pxn" path="res://Assets/Characters/Fish/Fish_1/png/6.png" id="14_575mf"]
 [ext_resource type="Texture2D" uid="uid://3og2rvqal026" path="res://Assets/Characters/Fish/Fish_1/png/7.png" id="15_belto"]
+[ext_resource type="AudioStream" uid="uid://j1c61f5oukas" path="res://Assets/Audio/eating.wav" id="20_tt1gs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rvu37"]
 
@@ -102,6 +103,21 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Animation" id="Animation_3a631"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.56249]
+}
+
 [sub_resource type="Animation" id="Animation_m26th"]
 resource_name = "rotating"
 length = 2.5
@@ -117,21 +133,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-6.28319, 6.28319]
-}
-
-[sub_resource type="Animation" id="Animation_3a631"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.56249]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_miwu5"]
@@ -165,14 +166,12 @@ limit_bottom = 700
 editor_draw_limits = true
 
 [node name="Camera2DSky1" type="Camera2D" parent="Area2D"]
-scale = Vector2(1, 1)
 limit_left = -2750
 limit_top = -2900
 limit_right = 2750
 limit_bottom = 750
 
 [node name="Camera2DSky2" type="Camera2D" parent="Area2D"]
-scale = Vector2(1, 1)
 zoom = Vector2(0.4, 0.4)
 limit_left = -2750
 limit_top = -2900
@@ -180,7 +179,6 @@ limit_right = 2750
 limit_bottom = 750
 
 [node name="Camera2DSpace" type="Camera2D" parent="Area2D"]
-scale = Vector2(1, 1)
 zoom = Vector2(0.35, 0.35)
 limit_left = -3000
 limit_top = -2000
@@ -188,14 +186,20 @@ limit_right = 3000
 limit_bottom = 2000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(-0.697639, 0.679422)
 rotation = 1.56249
-scale = Vector2(1.09995, 1.09995)
+scale = Vector2(0.992171, 0.971598)
 sprite_frames = SubResource("SpriteFrames_gbe8t")
-animation = &"idle_comet"
+animation = &"idle_fish"
+frame_progress = 0.108941
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/AnimatedSprite2D"]
 libraries = {
 "": SubResource("AnimationLibrary_miwu5")
 }
 
+[node name="AudioEating" type="AudioStreamPlayer" parent="Area2D"]
+stream = ExtResource("20_tt1gs")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="finished" from="Area2D/AudioEating" to="." method="_on_audio_eating_finished"]

@@ -1,6 +1,7 @@
 extends Node
 
 var game_menager
+var parent
 
 # birds
 var Bee_Scene = preload("res://Scenes/bee.tscn")
@@ -36,7 +37,9 @@ var Big_White_bird_Scene = preload("res://Scenes/big_white_bird.tscn")
 @export var height_negative = -2900
 
 func _ready() -> void:
-	game_menager = get_node("/root/SkyLevel/GameMenager") 
+	parent = get_parent()
+	
+	game_menager = parent.get_node("GameMenagerSky") 
 	
 	var enemy_number = 0
 		

@@ -41,8 +41,14 @@ var game_menager
 @export var height_negative = -450
 @export var exp_height_negative = -2050
 
+var parent
+var player_mesh = 200
+var player
+
 func _ready() -> void:
+	parent = get_parent()
 	game_menager = get_node("/root/MainScene/GameMenager") 
+	player = parent.get_node("Player")
 	
 	var cells_number = 0
 		
@@ -82,6 +88,14 @@ func init_cells(name):
 	var inistance
 	var position_x = randi_range(width_negative, width)
 	var position_y = randi_range(height_negative, height)
+	
+	if abs(position_x - player.position.x) < player_mesh:
+		init_cells(name)
+		return
+	if abs(position_y - player.position.y) < player_mesh:
+		init_cells(name)
+		return
+		
 	var cell_scale = randf_range(.2, 2)
 	
 	if name == "red":
@@ -100,12 +114,13 @@ func init_cells(name):
 			
 	inistance.position.x = position_x
 	inistance.position.y = position_y 
-	if game_menager.points < 100:
-		inistance.scale.x = cell_scale
-		inistance.scale.y = cell_scale
-	else:
-		inistance.scale.x = .1
-		inistance.scale.y = .1
+	if game_menager != null:
+		if game_menager.points < 100:
+			inistance.scale.x = cell_scale
+			inistance.scale.y = cell_scale
+		else:
+			inistance.scale.x = .1
+			inistance.scale.y = .1
 	
 	add_child(inistance)
 	
@@ -148,6 +163,14 @@ func init_fish(name):
 	var inistance
 	var position_x = randi_range(width_negative, width)
 	var position_y = randi_range(exp_height_negative, height)
+	
+	if abs(position_x - player.position.x) < player_mesh:
+		init_fish(name)
+		return
+	if abs(position_y - player.position.y) < player_mesh:
+		init_fish(name)
+		return
+	
 	var fish_scale = randf_range(1, 4)
 	
 	if name == "narval":

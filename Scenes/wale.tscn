@@ -7,6 +7,7 @@
 
 [node name="Wale" type="CharacterBody2D" groups=["enemy", "fish"]]
 script = ExtResource("1_0w511")
+height_negative = -2050
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy", "fish"]]
 
@@ -16,9 +17,9 @@ scale = Vector2(15.175, 15.175)
 shape = SubResource("CircleShape2D_d4p68")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
-position = Vector2(-3, 10)
+position = Vector2(-40, 0)
 rotation = 1.57346
-scale = Vector2(0.879999, 0.679999)
+scale = Vector2(1.27972, 0.770448)
 sprite_frames = ExtResource("2_3ghp8")
 animation = &"idle"
 frame_progress = 0.0499227

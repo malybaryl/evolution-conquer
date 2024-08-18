@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbe5c3ln6hf5g"]
+[gd_scene load_steps=7 format=3 uid="uid://dbe5c3ln6hf5g"]
 
+[ext_resource type="AudioStream" uid="uid://b28t8tfjm6iyw" path="res://Assets/Music/sky.mp3" id="1_a78so"]
 [ext_resource type="PackedScene" uid="uid://3rvodiojsdr0" path="res://Scenes/game_menager_sky.tscn" id="1_ym331"]
 [ext_resource type="PackedScene" uid="uid://cmo1opgf7vim" path="res://Scenes/enemy_generator_sky.tscn" id="2_dccgh"]
 [ext_resource type="PackedScene" uid="uid://c6x2w71e5jrkh" path="res://Scenes/cheese_menager.tscn" id="2_vftue"]
@@ -7,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://bobch5ho24sgl" path="res://Scenes/background_sky.tscn" id="5_mcrjx"]
 
 [node name="SkyLevel" type="Node2D"]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_a78so")
+autoplay = true
+parameters/looping = true
 
 [node name="GameMenagerSky" parent="." instance=ExtResource("1_ym331")]
 sky_level = true
@@ -24,4 +30,4 @@ position = Vector2(17, -1068)
 [node name="Player" parent="." instance=ExtResource("4_4blit")]
 position = Vector2(6, -1061)
 scale = Vector2(0.34, 0.342742)
-space_level = true
+sky_level = true
