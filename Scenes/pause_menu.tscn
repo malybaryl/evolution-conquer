@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbs4vfj7ariuq"]
+
+[ext_resource type="Script" path="res://Scenes/pause_menu.gd" id="1_kx2mm"]
+[ext_resource type="FontFile" uid="uid://x474cgkwo2ij" path="res://Assets/Fonts/Matemasie-Regular.ttf" id="1_rkpx3"]
+[ext_resource type="AudioStream" uid="uid://cq4c5kuryi3se" path="res://Assets/Audio/choose.ogg" id="3_qnwil"]
+
+[sub_resource type="Gradient" id="Gradient_7k3mf"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.243137)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h3goh"]
+gradient = SubResource("Gradient_7k3mf")
+width = 1920
+height = 1080
+
+[sub_resource type="Theme" id="Theme_8d5c4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gx52u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mppwx"]
+bg_color = Color(0, 0, 0, 0.439216)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqs48"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kx2mm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="background" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(-145, 557)
+texture = SubResource("GradientTexture2D_h3goh")
+offset = Vector2(1108, -18)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -490.5
+offset_top = -165.0
+offset_right = 490.5
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.633, 0.633)
+pivot_offset = Vector2(475.719, 63.6017)
+
+[node name="Paused" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("1_rkpx3")
+theme_override_font_sizes/font_size = 200
+text = "PAUSED"
+
+[node name="Paused2" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("1_rkpx3")
+theme_override_font_sizes/font_size = 20
+text = "Press \"ESC\" or  \"SPACE\" to unpause the game."
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -106.0
+offset_right = 478.0
+offset_bottom = -4.0
+grow_vertical = 0
+
+[node name="Back" type="Button" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.86
+theme = SubResource("Theme_8d5c4")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("1_rkpx3")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gx52u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mppwx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iqs48")
+text = "BACK TO MENU"
+flat = true
+
+[node name="AudioButton" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource("3_qnwil")
+
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer2/Back" to="." method="_on_back_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/VBoxContainer2/Back" to="." method="_on_back_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer2/Back" to="." method="_on_back_pressed"]
+[connection signal="finished" from="CanvasLayer/AudioButton" to="." method="_on_audio_button_finished"]

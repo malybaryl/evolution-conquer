@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1wo4g5o6oiv"]
+
+[sub_resource type="Curve" id="Curve_8u32h"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.376518, -90.989), 0.0, 0.0, 0, 0, Vector2(0.578947, 288.791), 0.0, 0.0, 0, 0, Vector2(0.663968, 360), 0.0, 0.0, 0, 0, Vector2(0.732794, -35.6044), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_bg8d5"]
+curve = SubResource("Curve_8u32h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p1e2h"]
+particle_flag_disable_z = true
+angle_min = -295.1
+angle_max = -295.1
+angle_curve = SubResource("CurveTexture_bg8d5")
+spread = 76.533
+angular_velocity_min = 127.21
+angular_velocity_max = 320.57
+orbit_velocity_min = -0.396
+orbit_velocity_max = 0.395
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+scale_max = 4.53
+scale_over_velocity_max = 17.67
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.00999998
+
+[node name="SkyParticles" type="GPUParticles2D"]
+position = Vector2(123, 0)
+amount = 1000
+amount_ratio = 0.9281
+process_material = SubResource("ParticleProcessMaterial_p1e2h")

@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbm2m072glq27"]
+
+[sub_resource type="Curve" id="Curve_6o2gu"]
+min_value = -406.9
+max_value = 312.37
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.732794, 312.527), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ajv1j"]
+curve = SubResource("Curve_6o2gu")
+
+[sub_resource type="Gradient" id="Gradient_4nb8l"]
+offsets = PackedFloat32Array(0, 0.872146)
+colors = PackedColorArray(0.988508, 0.7981, 0.174065, 1, 0.721462, 0, 0.144096, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2g4dd"]
+gradient = SubResource("Gradient_4nb8l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8xo1v"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(100, 100, 1)
+emission_shape = 1
+emission_sphere_radius = 1.5
+angle_min = -249.3
+angle_max = 470.7
+angle_curve = SubResource("CurveTexture_ajv1j")
+inherit_velocity_ratio = 0.146
+spread = 118.577
+flatness = 0.423
+angular_velocity_min = -25.44
+angular_velocity_max = 137.39
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.0280001
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+radial_accel_min = -2.23517e-06
+radial_accel_max = 5.65
+tangential_accel_min = 4.24
+tangential_accel_max = 4.24
+damping_max = 36.749
+scale_max = 39.86
+color_ramp = SubResource("GradientTexture1D_2g4dd")
+
+[node name="SpaceParticles" type="GPUParticles2D"]
+amount = 1200
+process_material = SubResource("ParticleProcessMaterial_8xo1v")

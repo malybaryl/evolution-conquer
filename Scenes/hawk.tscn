@@ -1,18 +1,33 @@
 [gd_scene load_steps=4 format=3 uid="uid://ctb7kemtdmu6j"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_y5s8t"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_04d7c"]
 [ext_resource type="SpriteFrames" uid="uid://b68d5qfpbajmw" path="res://Animations/Characters/Big_Bird_1/big_bird_1.tres" id="2_qp16y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0bd2"]
 
 [node name="Hawk" type="CharacterBody2D"]
-script = ExtResource("1_y5s8t")
+script = ExtResource("1_04d7c")
 
 [node name="Area2D" type="Area2D" parent="." groups=["bird", "enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 3)
-scale = Vector2(15.175, 15.175)
+position = Vector2(69, -3)
+scale = Vector2(10.5276, -2.61611)
+shape = SubResource("CircleShape2D_j0bd2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-110, 3)
+scale = Vector2(6.44762, 6.66389)
+shape = SubResource("CircleShape2D_j0bd2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(53, -74)
+scale = Vector2(5.00235, 2.02974)
+shape = SubResource("CircleShape2D_j0bd2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(53, 71)
+scale = Vector2(5.00235, 2.02974)
 shape = SubResource("CircleShape2D_j0bd2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]

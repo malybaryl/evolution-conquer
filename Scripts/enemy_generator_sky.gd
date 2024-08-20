@@ -9,14 +9,14 @@ var Black_bird_Scene = preload("res://Scenes/black_bird.tscn")
 var Blue_buterfly_Scene = preload("res://Scenes/blue_butterfly.tscn")
 var Purple_buttlefly_Scene = preload("res://Scenes/purple_buttlefly.tscn")
 
-@export var number_of_bees: int = 3
-@export var interval_bees: int = 2
-@export var interval_black_birds: int = 3
-@export var number_of_black_birds: int = 2
-@export var number_of_blue_buterfly: int = 3
-@export var interval_blue_buterfly: int = 2
-@export var number_of_purple_buterfly: int = 3
-@export var interval_purple_buterfly: int = 2
+@export var number_of_bees: int = 2
+@export var interval_bees: int = 1
+@export var interval_black_birds: int = 2
+@export var number_of_black_birds: int = 1
+@export var number_of_blue_buterfly: int = 2
+@export var interval_blue_buterfly: int = 1
+@export var number_of_purple_buterfly: int = 2
+@export var interval_purple_buterfly: int = 1
 
 # big birds
 var Hawk_Scene = preload("res://Scenes/hawk.tscn")
@@ -136,13 +136,13 @@ func init_bird(name):
 	
 	elif name == "hawk":
 		inistance = Hawk_Scene.instantiate()
-		scale_ = randf_range(3, 6)
+		scale_ = randf_range(3, 3.5)
 	elif name == "flamingo":
 		inistance = Flamingo_Scene.instantiate()
-		scale_ = randf_range(3, 6)
+		scale_ = randf_range(3, 3.5)
 	elif name == "big_white_bird":
 		inistance = Big_White_bird_Scene.instantiate()
-		scale_ = randf_range(3, 6)
+		scale_ = randf_range(3, 3.5)
 	elif name == "random_big_bird":
 		var array = ["hawk", "flamingo", "big_white_bird"]
 		var enemy = array.pick_random()

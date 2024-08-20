@@ -1,0 +1,246 @@
+[gd_scene load_steps=34 format=3 uid="uid://xsb4lgklyeou"]
+
+[ext_resource type="PackedScene" uid="uid://bobch5ho24sgl" path="res://Scenes/background_sky.tscn" id="1_dde36"]
+[ext_resource type="Texture2D" uid="uid://d1gt57lehcawt" path="res://Assets/Characters/Cell/Cell_1/png/0.png" id="2_74a0m"]
+[ext_resource type="Texture2D" uid="uid://bexbtbwtuch6h" path="res://Assets/Characters/Coments/comet_5/png/coemt_5.png" id="3_1ejhs"]
+[ext_resource type="Texture2D" uid="uid://d18c5g4usxr6l" path="res://Assets/Characters/Coments/comet_3/png/comer_3.png" id="4_0ihat"]
+[ext_resource type="Texture2D" uid="uid://bvqhhk8xcch0r" path="res://Assets/Characters/Coments/comet_4/png/comet_4.png" id="5_030xm"]
+[ext_resource type="Texture2D" uid="uid://mgfngjcs5unn" path="res://Assets/Characters/Coments/comet_2/png/coment_2.png" id="6_qnfd2"]
+[ext_resource type="Texture2D" uid="uid://c5isexjpi3tct" path="res://Assets/Characters/BigBirds/Bird_2/png/0.png" id="7_xjr71"]
+[ext_resource type="Texture2D" uid="uid://5pyir5uate6j" path="res://Assets/Characters/BigBirds/Bird_3/png/0.png" id="8_55vbh"]
+[ext_resource type="Texture2D" uid="uid://bg2fgp4walvse" path="res://Assets/Characters/Fish/Fish_5/png/0.png" id="9_hnx6u"]
+[ext_resource type="Texture2D" uid="uid://cssb5wi7pxj8m" path="res://Assets/Characters/Fish/Fish_3/png/0.png" id="10_mb4j6"]
+[ext_resource type="Texture2D" uid="uid://rle34n5kxg2g" path="res://Assets/Characters/Fish/Fish_2/png/0.png" id="11_fp68q"]
+[ext_resource type="Texture2D" uid="uid://cvk4po5qspg26" path="res://Assets/Characters/Coments/comet_1/png/coment_1.png" id="12_0oofq"]
+[ext_resource type="Texture2D" uid="uid://b0dtj42l72jcr" path="res://Assets/Characters/Fish/Fish_1/png/0.png" id="13_p3mry"]
+[ext_resource type="Texture2D" uid="uid://c56c01tdxgeqk" path="res://Assets/Characters/Sun/png/1.png" id="14_bpg4b"]
+[ext_resource type="Texture2D" uid="uid://cna1anmxmgydo" path="res://Assets/Characters/Sun/png/0.png" id="15_4l5e0"]
+[ext_resource type="Texture2D" uid="uid://bdf373us2glgv" path="res://Assets/Characters/Cell/Cell_2/png/3.png" id="16_xby5p"]
+[ext_resource type="Texture2D" uid="uid://bkxxc32fyh1gv" path="res://Assets/Characters/Cell/Cell_5/png/1.png" id="17_vphwt"]
+[ext_resource type="Texture2D" uid="uid://bh4lamokhb8ir" path="res://Assets/Objects/Flying Cheese/png/0.png" id="18_a1nrb"]
+[ext_resource type="FontFile" uid="uid://x474cgkwo2ij" path="res://Assets/Fonts/Matemasie-Regular.ttf" id="19_hrd71"]
+[ext_resource type="Texture2D" uid="uid://by5ukoudtsfda" path="res://Assets/Cosmic Cheese.png" id="20_v58vi"]
+[ext_resource type="Texture2D" uid="uid://crcgfokepysmm" path="res://Assets/Objects/Cheese/png/cheese.png" id="21_2aadu"]
+[ext_resource type="Texture2D" uid="uid://xte6g0ngyvuh" path="res://Assets/Characters/Cell/Cell_3/png/3.png" id="22_jsc6v"]
+[ext_resource type="Texture2D" uid="uid://300gwxrrrdua" path="res://Assets/Characters/Cell/Cell_4/png/1.png" id="23_7t8f7"]
+[ext_resource type="Texture2D" uid="uid://b63uue6rmm84q" path="res://Assets/Characters/Bird/Bird_2/png/0.png" id="24_81p0l"]
+[ext_resource type="Texture2D" uid="uid://bc6ro0uejht74" path="res://Assets/Characters/Bird/Bird_3/png/0.png" id="25_idp0e"]
+[ext_resource type="Texture2D" uid="uid://dww2trpaeq1fw" path="res://Assets/Characters/Bird/Bird_4/png/0.png" id="26_aqlpk"]
+[ext_resource type="Texture2D" uid="uid://pvvlohr4j34s" path="res://Assets/Characters/Bird/Bird_5/png/0.png" id="27_1tc6u"]
+[ext_resource type="Texture2D" uid="uid://d21nwt4r0i32s" path="res://Assets/Characters/BigBirds/Bird_1/png/1.png" id="28_1uigs"]
+[ext_resource type="Texture2D" uid="uid://cs0s0ifjbta3g" path="res://Assets/Characters/Fish/Fish_4/png/0.png" id="29_t5445"]
+[ext_resource type="Texture2D" uid="uid://b165clv8niuup" path="res://Assets/Characters/Bird/Bird_1/png/0.png" id="30_4utk0"]
+
+[sub_resource type="Animation" id="Animation_h0d7u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_66rk8"]
+resource_name = "title_animation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m1wnd"]
+_data = {
+"RESET": SubResource("Animation_h0d7u"),
+"title_animation": SubResource("Animation_66rk8")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.83496
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.765, 0.765)
+
+[node name="background_sky" parent="." instance=ExtResource("1_dde36")]
+position = Vector2(2118.95, 585.621)
+
+[node name="1" type="Sprite2D" parent="background_sky"]
+position = Vector2(-119, 125)
+texture = ExtResource("2_74a0m")
+
+[node name="Coemt5" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1517, 402)
+rotation = -1.59287
+texture = ExtResource("3_1ejhs")
+
+[node name="Comer3" type="Sprite2D" parent="background_sky"]
+position = Vector2(-167, 374)
+texture = ExtResource("4_0ihat")
+
+[node name="Comet4" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1314, -332)
+scale = Vector2(0.306, 0.306)
+texture = ExtResource("5_030xm")
+
+[node name="Coment2" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1492, -50)
+texture = ExtResource("6_qnfd2")
+
+[node name="11" type="Sprite2D" parent="background_sky"]
+position = Vector2(-103, -237)
+rotation = 1.07407
+texture = ExtResource("7_xjr71")
+
+[node name="12" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1154, -94.0001)
+rotation = -0.721329
+texture = ExtResource("8_55vbh")
+
+[node name="17" type="Sprite2D" parent="background_sky"]
+position = Vector2(-925, 470)
+rotation = -2.95434
+texture = ExtResource("9_hnx6u")
+
+[node name="15" type="Sprite2D" parent="background_sky"]
+position = Vector2(-488, -202)
+rotation = 0.62691
+texture = ExtResource("10_mb4j6")
+
+[node name="14" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1131, -197)
+rotation = -0.520727
+texture = ExtResource("11_fp68q")
+
+[node name="Coment1" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1296, 123)
+texture = ExtResource("12_0oofq")
+
+[node name="13" type="Sprite2D" parent="background_sky"]
+position = Vector2(-308, 140)
+rotation = 0.155678
+texture = ExtResource("13_p3mry")
+
+[node name="Sun-" type="Sprite2D" parent="background_sky"]
+position = Vector2(-830, 109)
+texture = ExtResource("14_bpg4b")
+
+[node name="Sun" type="Sprite2D" parent="background_sky"]
+position = Vector2(-825, 103)
+texture = ExtResource("15_4l5e0")
+
+[node name="3" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1545, 55.9999)
+rotation = -0.697844
+texture = ExtResource("16_xby5p")
+
+[node name="5" type="Sprite2D" parent="background_sky"]
+position = Vector2(-226, 292)
+scale = Vector2(0.320001, 0.320001)
+texture = ExtResource("17_vphwt")
+
+[node name="18" type="Sprite2D" parent="background_sky"]
+position = Vector2(-4169.5, -1051.5)
+rotation = 3.14159
+scale = Vector2(0.999998, -1)
+texture = ExtResource("18_a1nrb")
+
+[node name="Title" type="Label" parent="background_sky"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1656.0
+offset_top = 15.0
+offset_bottom = 202.0
+grow_horizontal = 2
+pivot_offset = Vector2(662.5, 72)
+theme_override_constants/line_spacing = 10
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 25
+theme_override_constants/shadow_outline_size = 200
+theme_override_fonts/font = ExtResource("19_hrd71")
+theme_override_font_sizes/font_size = 126
+text = "EVOLUTION CONQUER"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background_sky/Title"]
+libraries = {
+"": SubResource("AnimationLibrary_m1wnd")
+}
+
+[node name="CosmicCheese" type="Sprite2D" parent="background_sky/Title"]
+position = Vector2(1649, 168)
+rotation = -0.138546
+texture = ExtResource("20_v58vi")
+
+[node name="Cheese" type="Sprite2D" parent="background_sky/Title"]
+position = Vector2(-2473.25, -1058.25)
+scale = Vector2(-0.937981, 0.994007)
+texture = ExtResource("21_2aadu")
+
+[node name="4" type="Sprite2D" parent="background_sky"]
+position = Vector2(73.0005, 600)
+rotation = -0.678415
+texture = ExtResource("22_jsc6v")
+
+[node name="2" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1031, -445)
+rotation = 3.08234
+texture = ExtResource("23_7t8f7")
+
+[node name="0" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1342, 491)
+rotation = -2.29735
+texture = ExtResource("24_81p0l")
+
+[node name="7" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1727.5, 610.5)
+rotation = 0.525676
+scale = Vector2(0.314, 0.314)
+texture = ExtResource("25_idp0e")
+
+[node name="8" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1619, 541)
+rotation = 0.758492
+scale = Vector2(0.322, 0.322)
+texture = ExtResource("26_aqlpk")
+
+[node name="9" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1728, 403)
+rotation = 1.00596
+scale = Vector2(0.372, 0.372)
+texture = ExtResource("27_1tc6u")
+
+[node name="10" type="Sprite2D" parent="background_sky"]
+position = Vector2(-357, 608)
+rotation = 2.48148
+scale = Vector2(0.845337, 0.845337)
+texture = ExtResource("28_1uigs")
+
+[node name="16" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1719, -336)
+rotation = 2.20544
+texture = ExtResource("29_t5445")
+
+[node name="6" type="Sprite2D" parent="background_sky"]
+position = Vector2(-1501, -272)
+rotation = 1.66708
+scale = Vector2(0.598008, 0.598008)
+texture = ExtResource("30_4utk0")

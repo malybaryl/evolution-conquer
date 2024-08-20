@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbe5c3ln6hf5g"]
+[gd_scene load_steps=11 format=3 uid="uid://dbe5c3ln6hf5g"]
 
 [ext_resource type="AudioStream" uid="uid://b28t8tfjm6iyw" path="res://Assets/Music/sky.mp3" id="1_a78so"]
 [ext_resource type="PackedScene" uid="uid://3rvodiojsdr0" path="res://Scenes/game_menager_sky.tscn" id="1_ym331"]
@@ -6,6 +6,70 @@
 [ext_resource type="PackedScene" uid="uid://c6x2w71e5jrkh" path="res://Scenes/cheese_menager.tscn" id="2_vftue"]
 [ext_resource type="PackedScene" uid="uid://i70yk16ub7it" path="res://Scenes/player.tscn" id="4_4blit"]
 [ext_resource type="PackedScene" uid="uid://bobch5ho24sgl" path="res://Scenes/background_sky.tscn" id="5_mcrjx"]
+
+[sub_resource type="Animation" id="Animation_qnnjd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/Transition:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/Transition:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-79, -4587)]
+}
+
+[sub_resource type="Animation" id="Animation_ebwsk"]
+resource_name = "start_transition"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/Transition:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-79, -1120), Vector2(-79, -4870)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/Transition:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pionl"]
+_data = {
+"RESET": SubResource("Animation_qnnjd"),
+"start_transition": SubResource("Animation_ebwsk")
+}
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ro4t4"]
+specular_color = Color(0, 0, 0, 1)
 
 [node name="SkyLevel" type="Node2D"]
 
@@ -31,3 +95,14 @@ position = Vector2(17, -1068)
 position = Vector2(6, -1061)
 scale = Vector2(0.34, 0.342742)
 sky_level = true
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pionl")
+}
+
+[node name="Transition" type="Sprite2D" parent="Transition"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-79, -4587)
+scale = Vector2(5855, 3809.25)
+texture = SubResource("CanvasTexture_ro4t4")

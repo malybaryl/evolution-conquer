@@ -1,0 +1,575 @@
+[gd_scene load_steps=16 format=3 uid="uid://dfi1ojm6p0t20"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_b1n35"]
+[ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="2_o2yhs"]
+[ext_resource type="FontFile" uid="uid://x474cgkwo2ij" path="res://Assets/Fonts/Matemasie-Regular.ttf" id="3_07v6p"]
+[ext_resource type="Texture2D" uid="uid://w2tgsjiwxwlj" path="res://Assets/UI/Logos/mjNkCMp7.png" id="4_klyw7"]
+[ext_resource type="Script" path="res://Scenes/audio_stream_player.gd" id="5_me0n8"]
+
+[sub_resource type="Animation" id="Animation_y6tmo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.359999, 0.359999)]
+}
+
+[sub_resource type="Animation" id="Animation_jdknx"]
+resource_name = "bg moving"
+length = 60.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30, 60),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.35, 0.35), Vector2(1, 1), Vector2(0.35, 0.35)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7g6kh"]
+_data = {
+"RESET": SubResource("Animation_y6tmo"),
+"bg moving": SubResource("Animation_jdknx")
+}
+
+[sub_resource type="Theme" id="Theme_8ases"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xh2en"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ea7nc"]
+bg_color = Color(0, 0, 0, 0.439216)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fg07"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Animation" id="Animation_77ppy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(454.5, 1097)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/VBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_balg5"]
+resource_name = "credits_animation"
+length = 120.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 119.933),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(454.5, 1097), Vector2(454.5, -3714)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/VBoxContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 119.933, 119.967),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5n3lh"]
+_data = {
+"RESET": SubResource("Animation_77ppy"),
+"credits_animation": SubResource("Animation_balg5")
+}
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b1n35")
+background = true
+play_music = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background_space" parent="CanvasLayer" instance=ExtResource("2_o2yhs")]
+position = Vector2(951, 514)
+scale = Vector2(0.359999, 0.359999)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Background_space"]
+libraries = {
+"": SubResource("AnimationLibrary_7g6kh")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -505.5
+offset_top = -4753.9
+offset_right = 505.5
+offset_bottom = -1416.9
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Title" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 196
+text = "CREDITS"
+
+[node name="Title2" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+text = "
+Before we begin, I want to say that this project has been an incredible journey for me. The game was created in just 4 days as part of the \"GMTK Game Jam 2024\". I am grateful to the organizers for giving me the opportunity to test my skills in this competition. And to you, the player, I hope you enjoyed the game despite the rough edges due to the tight deadline. Thank you so much for playing, and I encourage you to follow my work and future projects. Thank you!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title3" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title10" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+text = "All assets used in game are free to use and copy rights free"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title11" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title41" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+text = "Check my GitHub: https://github.com/malybaryl"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title42" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title43" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+text = "And my Itch.io: https://itch.io/profile/sipmleecodee"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title44" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Scripts" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 64
+text = "-----------SCRIPTS-----------"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title5" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title4" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+text = "Kacper Baryłowicz \"SimpleeCodee\""
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title6" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Scripts2" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 64
+text = "-----------IMAGES-----------"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title8" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title7" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+text = "Kacper Baryłowicz \"SimpleeCodee\""
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title9" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 16
+text = "All characters were hand-painted"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title12" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title13" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+text = "https://pixabay.com/"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title14" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 16
+text = "All backgrounds"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title15" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Scripts3" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 64
+text = "-----------AUDIO-----------"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title17" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title16" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+text = "Kacper Baryłowicz \"SimpleeCodee\""
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title18" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 16
+text = "Sounds Effects"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title19" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title20" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+text = "https://www.kenney.nl/"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title21" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 16
+text = "Sounds Effects"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title22" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 12
+text = "Packed title: kenney_interface-sounds.zip"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title23" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title24" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+text = "https://incompetech.com"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title25" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 16
+text = "Music"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title26" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 12
+text = "Titles;"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title27" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 12
+text = "- \"Cloud Dancer\"
+              -\"Vibing Over Venus\"
+         - \"Southern Gothic\"
+                    - \"Magic Escape Room\"
+     - \"Bleeping Demo\""
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Title28" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title29" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+text = "https://pixabay.com"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title30" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 16
+text = "Music"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title31" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 12
+text = "Titles;"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title32" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 12
+text = "                              - \"Dancing in The Stardust\"
+         -\"Daily Grind Blues\"
+                  - \"Echoes of The Night\"
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Title33" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Scripts4" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 64
+text = "-----------FONTS-----------"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title34" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title35" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+text = "https://fonts.google.com/"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title36" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 16
+text = "\"Matemasie\""
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title37" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Scripts5" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 64
+text = "-------------------------------"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title38" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title39" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Scripts6" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 64
+text = "Special Thanks For..."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Title40" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/VBoxContainer"]
+position = Vector2(509.5, 3466)
+scale = Vector2(0.159999, 0.159999)
+texture = ExtResource("4_klyw7")
+
+[node name="Back" type="Button" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -72.0
+offset_right = 577.0
+grow_vertical = 0
+size_flags_stretch_ratio = 0.86
+theme = SubResource("Theme_8ases")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_07v6p")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xh2en")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ea7nc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1fg07")
+text = "  Back"
+flat = true
+alignment = 0
+
+[node name="CreditsAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5n3lh")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("5_me0n8")
+
+[connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

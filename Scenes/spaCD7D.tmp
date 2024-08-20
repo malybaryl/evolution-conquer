@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://bcmaqlyaqt4a8"]
+
+[ext_resource type="AudioStream" uid="uid://bvak6vm61vqsg" path="res://Assets/Music/space.mp3" id="1_edj3s"]
+[ext_resource type="PackedScene" uid="uid://c6x2w71e5jrkh" path="res://Scenes/cheese_menager.tscn" id="1_jcchr"]
+[ext_resource type="PackedScene" uid="uid://ddnughon8owal" path="res://Scenes/game_menager_space.tscn" id="1_q7whw"]
+[ext_resource type="PackedScene" uid="uid://i70yk16ub7it" path="res://Scenes/player.tscn" id="2_m6rr5"]
+[ext_resource type="PackedScene" uid="uid://b3qoucobn5q0x" path="res://Scenes/enemy_generator_space.tscn" id="3_6xs5j"]
+[ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="3_k6r8h"]
+[ext_resource type="PackedScene" uid="uid://dhatd13s41mnt" path="res://Scenes/earth.tscn" id="6_05bht"]
+[ext_resource type="PackedScene" uid="uid://csggchmcv1d16" path="res://Scenes/mars.tscn" id="7_n24i6"]
+[ext_resource type="PackedScene" uid="uid://cd4tauein57wh" path="res://Scenes/moon.tscn" id="8_2oyje"]
+[ext_resource type="PackedScene" uid="uid://cv5k6aenncue2" path="res://Scenes/purple_comet.tscn" id="9_b5wr4"]
+
+[node name="SpaceLevel" type="Node2D"]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_edj3s")
+autoplay = true
+parameters/looping = true
+
+[node name="GameMenagerSpace" parent="." instance=ExtResource("1_q7whw")]
+
+[node name="CheeseMenager" parent="." instance=ExtResource("1_jcchr")]
+number_of_cheese = 15
+width = 3000
+width_negative = -3000
+height = 4000
+height_negative = -4000
+space_cheese = true
+
+[node name="EnemyGeneratorSpace" parent="." instance=ExtResource("3_6xs5j")]
+
+[node name="Background_space" parent="." instance=ExtResource("3_k6r8h")]
+
+[node name="Player" parent="." instance=ExtResource("2_m6rr5")]
+scale = Vector2(0.34, 0.342742)
+sky_level = null
+space_level = true
+
+[node name="Earth" parent="." instance=ExtResource("6_05bht")]
+position = Vector2(-1468, -1145)
+scale = Vector2(4.08, 4.08)
+
+[node name="Mars" parent="." instance=ExtResource("7_n24i6")]
+position = Vector2(1826, -293)
+scale = Vector2(-2.45392, -2.45392)
+
+[node name="Moon" parent="." instance=ExtResource("8_2oyje")]
+position = Vector2(-618, -411)
+scale = Vector2(1.36, 1.36)
+
+[node name="PurpleComet" parent="." instance=ExtResource("9_b5wr4")]
+position = Vector2(655, 427)

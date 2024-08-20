@@ -42,14 +42,43 @@ var game_menager
 @export var exp_height_negative = -2050
 
 var parent
-var player_mesh = 200
+var player_mesh = 600
 var player
+
+var narval_points
 
 func _ready() -> void:
 	parent = get_parent()
 	game_menager = get_node("/root/MainScene/GameMenager") 
 	player = parent.get_node("Player")
 	
+	# narval points
+	narval_points = [
+		get_node("NarvalPoints/Point1").position,
+		get_node("NarvalPoints/Point2").position,
+		get_node("NarvalPoints/Point3").position,
+		get_node("NarvalPoints/Point4").position,
+		get_node("NarvalPoints/Point5").position,
+		get_node("NarvalPoints/Point6").position,
+		get_node("NarvalPoints/Point7").position,
+		get_node("NarvalPoints/Point8").position,
+		get_node("NarvalPoints/Point9").position,
+		get_node("NarvalPoints/Point10").position,
+		get_node("NarvalPoints/Point11").position,
+		get_node("NarvalPoints/Point12").position,
+		get_node("NarvalPoints/Point13").position,
+		get_node("NarvalPoints/Point14").position,
+		get_node("NarvalPoints/Point15").position,
+		get_node("NarvalPoints/Point16").position,
+		get_node("NarvalPoints/Point17").position,
+		get_node("NarvalPoints/Point18").position,
+		get_node("NarvalPoints/Point19").position,
+		get_node("NarvalPoints/Point20").position,
+	]
+	
+	init_all_cells()
+
+func init_all_cells():	
 	var cells_number = 0
 		
 	if number_of_red_cells - interval_red_cells < 1:
@@ -84,44 +113,73 @@ func _ready() -> void:
 	for x in range(cells_number):
 		init_cells("blue")
 		 
-func init_cells(name):
-	var inistance
-	var position_x = randi_range(width_negative, width)
-	var position_y = randi_range(height_negative, height)
-	
-	if abs(position_x - player.position.x) < player_mesh:
-		init_cells(name)
-		return
-	if abs(position_y - player.position.y) < player_mesh:
-		init_cells(name)
-		return
+func init_cells(name, attempts = 10):
+	if attempts <= 0:
+		# Maximum attempts reached, place cell at a random position without checking proximity to player
+		var inistance
+		var position_x = randi_range(width_negative, width)
+		var position_y = randi_range(height_negative, height)
+		var cell_scale = randf_range(.2, 2)
 		
-	var cell_scale = randf_range(.2, 2)
-	
-	if name == "red":
-		inistance = Cell_red_Scene.instantiate()
-	elif name == "yellow":
-		inistance = Cell_yellow_Scene.instantiate()
-	elif name == "purple":
-		inistance = Cell_purple_Scene.instantiate()	
-	elif name == "blue":
-		inistance = Cell_blue_Scene.instantiate()	
-	else:
-		var cell_array = ["red", "yellow", "purple", "blue"]
-		var cell = cell_array.pick_random()
-		init_cells(cell)
-		return
-			
-	inistance.position.x = position_x
-	inistance.position.y = position_y 
-	if game_menager != null:
+		match name:
+			"red":
+				inistance = Cell_red_Scene.instantiate()
+			"yellow":
+				inistance = Cell_yellow_Scene.instantiate()
+			"purple":
+				inistance = Cell_purple_Scene.instantiate()
+			"blue":
+				inistance = Cell_blue_Scene.instantiate()
+			_:
+				inistance = Cell_red_Scene.instantiate()
+				
+		
+		inistance.position.x = position_x
+		inistance.position.y = position_y
+		
 		if game_menager.points < 100:
 			inistance.scale.x = cell_scale
 			inistance.scale.y = cell_scale
 		else:
 			inistance.scale.x = .1
 			inistance.scale.y = .1
+		
+		add_child(inistance)
+		return
+
+	var position_x = randi_range(width_negative, width)
+	var position_y = randi_range(height_negative, height)
 	
+	if abs(position_x - player.position.x) < player_mesh or abs(position_y - player.position.y) < player_mesh:
+		init_cells(name, attempts - 1)
+		return
+
+	var inistance
+	var cell_scale = randf_range(.2, 2)
+	
+	match name:
+		"red":
+			inistance = Cell_red_Scene.instantiate()
+		"yellow":
+			inistance = Cell_yellow_Scene.instantiate()
+		"purple":
+			inistance = Cell_purple_Scene.instantiate()
+		"blue":
+			inistance = Cell_blue_Scene.instantiate()
+		_:
+			var cell_array = ["red", "yellow", "purple", "blue"]
+			var cell = cell_array.pick_random()
+			init_cells(name, attempts - 1)
+			return
+		
+	inistance.position.x = position_x
+	inistance.position.y = position_y
+	if game_menager.points < 100:
+		inistance.scale.x = cell_scale
+		inistance.scale.y = cell_scale
+	else:
+		inistance.scale.x = .1
+		inistance.scale.y = .1
 	add_child(inistance)
 	
 func init_all_fish():
@@ -174,7 +232,23 @@ func init_fish(name):
 	var fish_scale = randf_range(1, 4)
 	
 	if name == "narval":
+		var init_position
+		var direction_position
+		var going_up
+		var index = randi_range(0, narval_points.size() - 1)
+		if index % 2 == 0:
+			init_position = narval_points[index]
+			direction_position = narval_points[index + 1]
+			going_up = true
+		else:
+			init_position = narval_points[index]
+			direction_position = narval_points[index - 1]	
+			going_up = false
+		position_x = init_position[0]
+		position_y = init_position[1]
+		fish_scale = randf_range(.5, 1.5)
 		inistance = Narval_Scene.instantiate()
+		inistance.direction = direction_position
 	elif name == "ray":
 		inistance = Ray_Scene.instantiate()
 	elif name == "spiked_fish":
@@ -194,3 +268,6 @@ func init_fish(name):
 	
 	
 	add_child(inistance)
+
+
+	

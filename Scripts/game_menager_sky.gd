@@ -17,6 +17,8 @@ var fish_level = true
 
 func _ready() -> void:
 	parent = get_parent()
+	var music = parent.get_node("Music")
+	music.volume_db = (Global.float_to_db(Global.MUSIC))
 	if sky_level:
 		player = parent.get_node("Player") 
 		camera = player.get_node("Area2D/Camera2D") as Camera2D
@@ -26,6 +28,9 @@ func _ready() -> void:
 		# coursor handling
 		cursor_texture = load("res://Assets/UI/Coursor/png/coursor.png")
 		Input.set_custom_mouse_cursor(cursor_texture)
+		
+		var start_transition = parent.get_node("Transition")
+		start_transition.play("start_transition")
 	
 
 func add_points(number_of_point):
@@ -38,7 +43,7 @@ func add_points(number_of_point):
 	print("number of points: ", points)
 	
 	
-	if points > 99 and fish_level:
+	if points > 55 and fish_level:
 		tranform_sky_level_camera()
 		fish_level = false
 	

@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://j1c61f5oukas" path="res://Assets/Audio/eating.wav" id="20_tt1gs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rvu37"]
+radius = 7.60188
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gbe8t"]
 animations = [{
@@ -144,10 +145,13 @@ _data = {
 [node name="Player" type="Node2D"]
 script = ExtResource("1_osuoc")
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(15.175, 15.175)
+scale = Vector2(14.935, 14.935)
 shape = SubResource("CircleShape2D_rvu37")
 
 [node name="Camera2D" type="Camera2D" parent="Area2D"]
@@ -190,8 +194,7 @@ position = Vector2(-0.697639, 0.679422)
 rotation = 1.56249
 scale = Vector2(0.992171, 0.971598)
 sprite_frames = SubResource("SpriteFrames_gbe8t")
-animation = &"idle_fish"
-frame_progress = 0.108941
+animation = &"idle_bird"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/AnimatedSprite2D"]
 libraries = {
@@ -201,5 +204,6 @@ libraries = {
 [node name="AudioEating" type="AudioStreamPlayer" parent="Area2D"]
 stream = ExtResource("20_tt1gs")
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="finished" from="Area2D/AudioEating" to="." method="_on_audio_eating_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcmaqlyaqt4a8"]
+[gd_scene load_steps=16 format=3 uid="uid://bcmaqlyaqt4a8"]
 
 [ext_resource type="AudioStream" uid="uid://bvak6vm61vqsg" path="res://Assets/Music/space.mp3" id="1_edj3s"]
 [ext_resource type="PackedScene" uid="uid://c6x2w71e5jrkh" path="res://Scenes/cheese_menager.tscn" id="1_jcchr"]
@@ -6,12 +6,78 @@
 [ext_resource type="PackedScene" uid="uid://i70yk16ub7it" path="res://Scenes/player.tscn" id="2_m6rr5"]
 [ext_resource type="PackedScene" uid="uid://b3qoucobn5q0x" path="res://Scenes/enemy_generator_space.tscn" id="3_6xs5j"]
 [ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="3_k6r8h"]
+[ext_resource type="Script" path="res://Scenes/enemy_generator_space.gd" id="5_cxuro"]
 [ext_resource type="PackedScene" uid="uid://dhatd13s41mnt" path="res://Scenes/earth.tscn" id="6_05bht"]
+[ext_resource type="PackedScene" uid="uid://cbm2m072glq27" path="res://Scenes/space_particles.tscn" id="7_5pejw"]
 [ext_resource type="PackedScene" uid="uid://csggchmcv1d16" path="res://Scenes/mars.tscn" id="7_n24i6"]
 [ext_resource type="PackedScene" uid="uid://cd4tauein57wh" path="res://Scenes/moon.tscn" id="8_2oyje"]
-[ext_resource type="PackedScene" uid="uid://cv5k6aenncue2" path="res://Scenes/purple_comet.tscn" id="9_b5wr4"]
+
+[sub_resource type="Animation" id="Animation_p7mcn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/Transition:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.24979, 5.12506)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/Transition:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7wfvy"]
+resource_name = "bg transition"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/Transition:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.24979, 5.12506), Vector2(2.25, -4038)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/Transition:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x4vhv"]
+_data = {
+"RESET": SubResource("Animation_p7mcn"),
+"bg transition": SubResource("Animation_7wfvy")
+}
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mda4p"]
+specular_color = Color(0, 0, 0, 1)
 
 [node name="SpaceLevel" type="Node2D"]
+position = Vector2(-2, -2)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_edj3s")
@@ -21,7 +87,8 @@ parameters/looping = true
 [node name="GameMenagerSpace" parent="." instance=ExtResource("1_q7whw")]
 
 [node name="CheeseMenager" parent="." instance=ExtResource("1_jcchr")]
-number_of_cheese = 15
+number_of_cheese = 30
+interval = 10
 width = 3000
 width_negative = -3000
 height = 4000
@@ -29,6 +96,57 @@ height_negative = -4000
 space_cheese = true
 
 [node name="EnemyGeneratorSpace" parent="." instance=ExtResource("3_6xs5j")]
+script = ExtResource("5_cxuro")
+
+[node name="Timer" type="Timer" parent="EnemyGeneratorSpace"]
+autostart = true
+
+[node name="SpawnPoints" type="Node" parent="EnemyGeneratorSpace"]
+
+[node name="Point" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(-2921, 2061)
+
+[node name="Point2" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(-1501, 2125)
+
+[node name="Point3" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(-8, 2125)
+
+[node name="Point4" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(1163, 2093)
+
+[node name="Point5" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(2905, 2030)
+
+[node name="Point6" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(2925, -2773)
+
+[node name="Point7" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(1902, -2808)
+
+[node name="Point8" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(657, -2776)
+
+[node name="Point9" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(-540, -2864)
+
+[node name="Point10" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(-1650, -2863)
+
+[node name="Point11" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(-2874, -2863)
+
+[node name="Point12" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(-3693, -1503)
+
+[node name="Point13" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(-3820, 730)
+
+[node name="Point14" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(3682, -1187)
+
+[node name="Point15" type="Node2D" parent="EnemyGeneratorSpace/SpawnPoints"]
+position = Vector2(3690, 818)
 
 [node name="Background_space" parent="." instance=ExtResource("3_k6r8h")]
 
@@ -36,17 +154,76 @@ space_cheese = true
 scale = Vector2(0.34, 0.342742)
 space_level = true
 
-[node name="Earth" parent="." instance=ExtResource("6_05bht")]
-position = Vector2(-1468, -1145)
-scale = Vector2(4.08, 4.08)
+[node name="SpaceParticles" parent="Player" instance=ExtResource("7_5pejw")]
+show_behind_parent = true
 
-[node name="Mars" parent="." instance=ExtResource("7_n24i6")]
-position = Vector2(1826, -293)
-scale = Vector2(-2.45392, -2.45392)
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x4vhv")
+}
+
+[node name="Transition" type="Sprite2D" parent="Transition"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2.24979, 5.12506)
+scale = Vector2(6007.5, 4014.25)
+texture = SubResource("CanvasTexture_mda4p")
+
+[node name="Earth" parent="." instance=ExtResource("6_05bht")]
+position = Vector2(-208, -558)
+scale = Vector2(2.315, 2.315)
 
 [node name="Moon" parent="." instance=ExtResource("8_2oyje")]
-position = Vector2(-618, -411)
-scale = Vector2(1.36, 1.36)
 
-[node name="PurpleComet" parent="." instance=ExtResource("9_b5wr4")]
-position = Vector2(655, 427)
+[node name="Mars" parent="." instance=ExtResource("7_n24i6")]
+position = Vector2(-221, -524)
+scale = Vector2(1.64, 1.64)
+
+[node name="Points" type="Node" parent="Mars"]
+
+[node name="Point1" type="Node2D" parent="Mars/Points"]
+position = Vector2(-4206, -1518)
+
+[node name="Point2" type="Node2D" parent="Mars/Points"]
+position = Vector2(4201, -1518)
+
+[node name="Point3" type="Node2D" parent="Mars/Points"]
+position = Vector2(4201, 1276)
+
+[node name="Point4" type="Node2D" parent="Mars/Points"]
+position = Vector2(-4195, 1276)
+
+[node name="Point5" type="Node2D" parent="Mars/Points"]
+position = Vector2(-4195, -2872)
+
+[node name="Point6" type="Node2D" parent="Mars/Points"]
+position = Vector2(-2185, -2872)
+
+[node name="Point7" type="Node2D" parent="Mars/Points"]
+position = Vector2(-2185, 2630)
+
+[node name="Point8" type="Node2D" parent="Mars/Points"]
+position = Vector2(1778, 2630)
+
+[node name="Point9" type="Node2D" parent="Mars/Points"]
+position = Vector2(1778, -2801)
+
+[node name="Point10" type="Node2D" parent="Mars/Points"]
+position = Vector2(10, -2801)
+
+[node name="Point11" type="Node2D" parent="Mars/Points"]
+position = Vector2(10, 2858)
+
+[node name="Point12" type="Node2D" parent="Mars/Points"]
+position = Vector2(4130, 2858)
+
+[node name="Point13" type="Node2D" parent="Mars/Points"]
+position = Vector2(4130, -21)
+
+[node name="Point14" type="Node2D" parent="Mars/Points"]
+position = Vector2(-4081, -21)
+
+[node name="Point15" type="Node2D" parent="Mars/Points"]
+position = Vector2(-4081, -21)
+
+[connection signal="timeout" from="EnemyGeneratorSpace/Timer" to="EnemyGeneratorSpace" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="Transition" to="GameMenagerSpace" method="_on_transition_animation_finished"]
