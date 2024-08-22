@@ -164,3 +164,13 @@ func _on_play_transition_animation_finished(anim_name: StringName) -> void:
 
 func _on_settings_button_pressed() -> void:
 	get_tree().change_scene_to_file(settings_scene_str)
+
+
+func _on_open_changes_log_pressed() -> void:
+	var changes_log_animator = get_node("ChangesLogAnimation")
+	changes_log_animator.play("changes_log_animation")
+
+
+func _on_close_changes_log_pressed() -> void:
+	var changes_log_animator = get_node("ChangesLogAnimation")
+	changes_log_animator.play_backwards("changes_log_animation")
