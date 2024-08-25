@@ -1,17 +1,17 @@
 extends Node2D
 
-var first_level = preload("res://Scenes/main_scene.tscn")
-var second_level = preload("res://Scenes/sky_level.tscn")
-var third_level = preload("res://Scenes/space_level.tscn")
-
-
 @export var turn_on_first_level = false
-@export var turn_on_second_level = false
-@export var turn_on_third_level = false
+
+var first_level = "res://Scenes/main_scene.tscn"
+
+var	cliked_start_button = false
+var cliked_quit_button = false
+var cliked_settings_button = false
 
 var can_by_audio_played = true
 var button_audio
 var settings_scene_str = "res://Scenes/settings.tscn"
+var choose_level_scene = "res://Scenes/choose_level.tscn"
 
 
 func _ready() -> void:
@@ -70,60 +70,29 @@ func _ready() -> void:
 	var red_cell_moving = red_cell_animator.get_node("AnimationPlayer")
 	red_cell_moving.play("red_cell_menu_animation")
 	
+	var transition = get_node("PlayTransition") as AnimationPlayer
+	transition.play_backwards("play_transition")
+	
 func _process(delta: float) -> void:
 	if turn_on_first_level:
-		if first_level:
+		if Global.deep_sea_level_completed == false:
+			get_tree().change_scene_to_file(first_level)	
+			return
+		
+		get_tree().change_scene_to_file(choose_level_scene)
 			
-			print("first_level loaded")
-			
-			var instance = first_level.instantiate()
-			if instance:
-				print("Instance created")
-				get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
-				add_child(instance)
-				print("Instance added to scene tree")
-			else:
-				print("Failed to create instance")
-		else:
-			print("Failed to preload first_level")
-		turn_on_first_level = false
-			
-	if turn_on_second_level:
-		if second_level:
-			print("second_level loaded")
-			var instance = second_level.instantiate()
-			if instance:
-				print("Instance created")
-				add_child(instance)
-				print("Instance added to scene tree")
-			else:
-				print("Failed to create instance")
-		else:
-			print("Failed to preload second_level")
-		turn_on_second_level = false
-			
-	if turn_on_third_level:
-		if third_level:
-			print("second_level loaded")
-			var instance = third_level.instantiate()
-			if instance:
-				print("Instance created")
-				add_child(instance)
-				print("Instance added to scene tree")
-			else:
-				print("Failed to create instance")
-		else:
-			print("Failed to preload third_level")
-		turn_on_third_level = false
 
 func _on_quit_button_pressed() -> void:
-	get_tree().quit()
-
-
-func _on_start_button_pressed() -> void:
+	cliked_quit_button = true
 	var transition = get_node("PlayTransition")
 	transition.play("play_transition")
+	
 
+func _on_start_button_pressed() -> void:
+	cliked_start_button = true	
+	var transition = get_node("PlayTransition")
+	transition.play("play_transition")
+	
 
 func _on_button_finished() -> void: # chossing music
 	can_by_audio_played = true
@@ -159,11 +128,19 @@ func _on_quit_button_mouse_exited() -> void:
 
 
 func _on_play_transition_animation_finished(anim_name: StringName) -> void:	
-	turn_on_first_level = true
+	if cliked_start_button:
+		turn_on_first_level = true
+	elif cliked_quit_button:
+		get_tree().quit()
+	elif cliked_settings_button:
+		get_tree().change_scene_to_file(settings_scene_str)
 
 
 func _on_settings_button_pressed() -> void:
-	get_tree().change_scene_to_file(settings_scene_str)
+	cliked_settings_button = true
+	var transition = get_node("PlayTransition")
+	transition.play("play_transition")
+	
 
 
 func _on_open_changes_log_pressed() -> void:

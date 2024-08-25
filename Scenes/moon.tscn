@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cd4tauein57wh"]
 
-[ext_resource type="Script" path="res://moon.gd" id="1_q0jsy"]
+[ext_resource type="Script" path="res://Scripts/moon.gd" id="1_q0jsy"]
 [ext_resource type="Texture2D" uid="uid://bvqhhk8xcch0r" path="res://Assets/Characters/Coments/comet_4/png/comet_4.png" id="2_swnd5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dy1lj"]

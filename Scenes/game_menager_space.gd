@@ -30,6 +30,9 @@ func _ready() -> void:
 	cursor_texture = load("res://Assets/UI/Coursor/png/coursor.png")
 	Input.set_custom_mouse_cursor(cursor_texture)
 	
+	if not Global.space_level_completed:
+			Global.space_level_completed = true
+			
 	# animations
 	var bg_animation = parent.get_node("Transition")
 	bg_animation.play("bg transition")

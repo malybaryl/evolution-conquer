@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://j3l42q2k6473"]
 
-[ext_resource type="Script" path="res://lose_scene.gd" id="1_amajh"]
+[ext_resource type="Script" path="res://Scripts/lose_scene.gd" id="1_amajh"]
 [ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="2_fepr7"]
 [ext_resource type="AudioStream" uid="uid://cq4c5kuryi3se" path="res://Assets/Audio/choose.ogg" id="2_sbwbk"]
 [ext_resource type="FontFile" uid="uid://x474cgkwo2ij" path="res://Assets/Fonts/Matemasie-Regular.ttf" id="3_fgwle"]

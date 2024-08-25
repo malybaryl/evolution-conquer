@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://rkepq807vxe5"]
+[gd_scene load_steps=11 format=3 uid="uid://m8ou663t1rjv"]
 
-[ext_resource type="PackedScene" uid="uid://bjvplfju3hcop" path="res://Scenes/game_menager.tscn" id="1_3bw84"]
-[ext_resource type="PackedScene" uid="uid://i70yk16ub7it" path="res://Scenes/player.tscn" id="1_008fx"]
-[ext_resource type="AudioStream" uid="uid://ccde62p3r7oil" path="res://Assets/Music/deep_sea.mp3" id="1_byw8d"]
-[ext_resource type="PackedScene" uid="uid://c425qsydicyp4" path="res://Scenes/background_water.tscn" id="1_rx08h"]
-[ext_resource type="PackedScene" uid="uid://c6x2w71e5jrkh" path="res://Scenes/cheese_menager.tscn" id="2_2brmc"]
-[ext_resource type="PackedScene" uid="uid://dt61gdvf5vqk2" path="res://Scenes/enemies_generator.tscn" id="3_btjph"]
+[ext_resource type="AudioStream" uid="uid://ccde62p3r7oil" path="res://Assets/Music/deep_sea.mp3" id="1_dt04j"]
+[ext_resource type="PackedScene" uid="uid://bjvplfju3hcop" path="res://Scenes/game_menager.tscn" id="2_x6msd"]
+[ext_resource type="PackedScene" uid="uid://c6x2w71e5jrkh" path="res://Scenes/cheese_menager.tscn" id="3_gkrgu"]
+[ext_resource type="PackedScene" uid="uid://dt61gdvf5vqk2" path="res://Scenes/enemies_generator.tscn" id="4_i7fgi"]
+[ext_resource type="PackedScene" uid="uid://c425qsydicyp4" path="res://Scenes/background_water.tscn" id="5_k6xwd"]
+[ext_resource type="PackedScene" uid="uid://i70yk16ub7it" path="res://Scenes/player.tscn" id="6_kpe5a"]
 
 [sub_resource type="Animation" id="Animation_ue7lc"]
 length = 0.001
@@ -71,18 +71,19 @@ _data = {
 [sub_resource type="CanvasTexture" id="CanvasTexture_ql0fa"]
 specular_color = Color(0, 0, 0, 1)
 
-[node name="MainScene" type="Node2D"]
+[node name="OceanLevel" type="Node2D"]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_byw8d")
+stream = ExtResource("1_dt04j")
 autoplay = true
 parameters/looping = true
 
-[node name="GameMenager" parent="." instance=ExtResource("1_3bw84")]
+[node name="GameMenager" parent="." instance=ExtResource("2_x6msd")]
+start_with_fish_level = true
 
-[node name="CheeseMenager" parent="." instance=ExtResource("2_2brmc")]
+[node name="CheeseMenager" parent="." instance=ExtResource("3_gkrgu")]
 
-[node name="EnemiesGenerator" parent="." instance=ExtResource("3_btjph")]
+[node name="EnemiesGenerator" parent="." instance=ExtResource("4_i7fgi")]
 number_of_red_cells = 2
 interval_red_cells = 1
 interval_yellow_cells = 1
@@ -167,11 +168,11 @@ position = Vector2(2400, -1199)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-2754, 577, 2795, 578, 2795, -728, -2757, -723)
 
-[node name="Background_water" parent="." instance=ExtResource("1_rx08h")]
+[node name="Background_water" parent="." instance=ExtResource("5_k6xwd")]
 position = Vector2(0, -668)
 scale = Vector2(0.925, 0.925)
 
-[node name="Player" parent="." instance=ExtResource("1_008fx")]
+[node name="Player" parent="." instance=ExtResource("6_kpe5a")]
 scale = Vector2(0.34, 0.342742)
 
 [node name="StartTransition" type="AnimationPlayer" parent="."]

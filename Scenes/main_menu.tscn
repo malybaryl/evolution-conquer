@@ -1,6 +1,6 @@
-[gd_scene load_steps=74 format=3 uid="uid://riw4rhj70po0"]
+[gd_scene load_steps=75 format=3 uid="uid://riw4rhj70po0"]
 
-[ext_resource type="Script" path="res://main_menu.gd" id="1_0jw7o"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_0jw7o"]
 [ext_resource type="AudioStream" uid="uid://d2er1pwjqqrkb" path="res://Assets/Music/main_menu.mp3" id="2_f5q81"]
 [ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="2_p1dxh"]
 [ext_resource type="FontFile" uid="uid://x474cgkwo2ij" path="res://Assets/Fonts/Matemasie-Regular.ttf" id="2_rk655"]
@@ -30,6 +30,7 @@
 [ext_resource type="SpriteFrames" uid="uid://b6pl71w2y2n8d" path="res://Animations/Characters/Fish_2/fish_2_idle.tres" id="25_y4gfb"]
 [ext_resource type="SpriteFrames" uid="uid://uoydo7hdai3" path="res://Animations/Characters/Cell_2/cell_2_idle.tres" id="26_fwwbh"]
 [ext_resource type="Texture2D" uid="uid://dft1ryftnv0m6" path="res://Other/pngimg.com - linux_PNG1.png" id="30_ts4cp"]
+[ext_resource type="Texture2D" uid="uid://dfhtkq0li0gah" path="res://Other/white_circle.png" id="30_ukx31"]
 
 [sub_resource type="Animation" id="Animation_y6tmo"]
 length = 0.001
@@ -857,30 +858,30 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_00wg3"]
 resource_name = "play_transition"
-length = 0.5
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprites:visible")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false]
+"values": [true, true, true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("UI:visible")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false]
+"values": [true, true, true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -889,7 +890,7 @@ tracks/2/path = NodePath("PlayTransition/Transition:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.1, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(921, -552), Vector2(921, 538)]
@@ -904,6 +905,9 @@ _data = {
 [sub_resource type="CanvasTexture" id="CanvasTexture_8ihiw"]
 specular_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_hqoli"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_pkb1r"]
 resource_name = "changes_log_animation"
 tracks/0/type = "value"
@@ -916,7 +920,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.2, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1373, 1100), Vector2(1373, 632)]
+"values": [Vector2(1373, 1500), Vector2(1373, 600)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -933,33 +937,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ho04y"]
 resource_name = "new_animation"
-
-[sub_resource type="Animation" id="Animation_hqoli"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/Version:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1848, 1020)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/ChangesLog:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1373, 1100)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6etuq"]
 _data = {
@@ -1187,9 +1164,9 @@ anchor_left = 0.981
 anchor_top = 1.0
 anchor_right = 0.981
 anchor_bottom = 1.0
-offset_left = -35.5201
+offset_left = -35.52
 offset_top = -60.0
-offset_right = 4.47986
+offset_right = 4.47998
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(23, 39)
@@ -1218,9 +1195,9 @@ horizontal_alignment = 2
 [node name="ChangesLog" type="VBoxContainer" parent="UI"]
 layout_mode = 0
 offset_left = 1373.0
-offset_top = 1100.0
+offset_top = 1500.0
 offset_right = 1897.0
-offset_bottom = 1522.0
+offset_bottom = 3759.0
 
 [node name="ChangesLogTitle" type="Label" parent="UI/ChangesLog"]
 layout_mode = 2
@@ -1259,6 +1236,12 @@ theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
 text = "-> Now you can play \"Evolution Conquer\" on Linux."
 vertical_alignment = 1
+
+[node name="WhiteCircle" type="Sprite2D" parent="UI/ChangesLog/Log4"]
+show_behind_parent = true
+position = Vector2(439, 2.62086)
+scale = Vector2(0.0443513, -0.0986004)
+texture = ExtResource("30_ukx31")
 
 [node name="Pngimg_com-LinuxPng1" type="Sprite2D" parent="UI/ChangesLog/Log4"]
 show_behind_parent = true
@@ -1322,6 +1305,14 @@ text = "-> New collisions shapes of player and enemies."
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Log12" type="Label" parent="UI/ChangesLog"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rk655")
+theme_override_font_sizes/font_size = 16
+text = "-> Added evolution bar"
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="CloseChangesLog" type="Button" parent="UI/ChangesLog"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.86
@@ -1343,7 +1334,7 @@ libraries = {
 
 [node name="Transition" type="Sprite2D" parent="PlayTransition"]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(972, -944)
+position = Vector2(921, 538)
 scale = Vector2(2163, 1076)
 texture = SubResource("CanvasTexture_8ihiw")
 

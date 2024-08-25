@@ -1,8 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://7yknbphg7uht"]
+[gd_scene load_steps=22 format=3 uid="uid://7yknbphg7uht"]
 
-[ext_resource type="Script" path="res://ChooseLevel.gd" id="1_4hyu8"]
+[ext_resource type="Script" path="res://Scripts/ChooseLevel.gd" id="1_4hyu8"]
 [ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="2_5abhi"]
 [ext_resource type="FontFile" uid="uid://x474cgkwo2ij" path="res://Assets/Fonts/Matemasie-Regular.ttf" id="3_8s082"]
+[ext_resource type="Texture2D" uid="uid://cqoc4qnupmdsu" path="res://Other/EuumN5.png" id="4_lxqxr"]
+[ext_resource type="Texture2D" uid="uid://di5s8jjmo1tgg" path="res://Other/white.png" id="5_yvvm3"]
+[ext_resource type="Texture2D" uid="uid://namuhxmku6we" path="res://Other/blur.png" id="6_1bx13"]
+[ext_resource type="Texture2D" uid="uid://cuf487jcuavyi" path="res://Other/BTeqdB.png" id="6_vywmn"]
+[ext_resource type="Texture2D" uid="uid://ccgvl3yrpru5u" path="res://Other/2Rkkn3.png" id="7_akc44"]
+[ext_resource type="Texture2D" uid="uid://cjo247xvncfmd" path="res://Other/ItmiK1.png" id="8_7tl2x"]
+[ext_resource type="AudioStream" uid="uid://ccde62p3r7oil" path="res://Assets/Music/deep_sea.mp3" id="10_y5b7w"]
 
 [sub_resource type="Animation" id="Animation_y6tmo"]
 length = 0.001
@@ -42,6 +49,80 @@ _data = {
 "bg moving": SubResource("Animation_jdknx")
 }
 
+[sub_resource type="Theme" id="Theme_3v41n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7udca"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s13y7"]
+bg_color = Color(0, 0, 0, 0.439216)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0s4c"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xvqp7"]
+specular_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ll0wi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(929, -598)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sqfs1"]
+resource_name = "transition"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(929, 541), Vector2(929, -598)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rs2ko"]
+_data = {
+"RESET": SubResource("Animation_ll0wi"),
+"transition": SubResource("Animation_sqfs1")
+}
+
 [node name="ChooseLevel" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -75,3 +156,292 @@ theme_override_fonts/font = ExtResource("3_8s082")
 theme_override_font_sizes/font_size = 96
 text = "CHOOSE LEVEL"
 horizontal_alignment = 1
+
+[node name="Level1" type="Sprite2D" parent="."]
+position = Vector2(606, 414)
+scale = Vector2(0.281032, 0.274212)
+texture = ExtResource("4_lxqxr")
+
+[node name="White" type="Sprite2D" parent="Level1"]
+show_behind_parent = true
+position = Vector2(1.77606, -7.62939e-05)
+scale = Vector2(60.9435, 35.7447)
+texture = ExtResource("5_yvvm3")
+
+[node name="DeepOcean" type="Label" parent="Level1"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1609.96
+offset_top = 539.728
+offset_right = -262.964
+offset_bottom = 882.728
+grow_horizontal = 2
+pivot_offset = Vector2(662.5, 72)
+theme_override_fonts/font = ExtResource("3_8s082")
+theme_override_font_sizes/font_size = 231
+text = "DEEP OCEAN"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Level1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1916.0
+offset_top = -1115.5
+offset_right = 30.0
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Blur" type="Sprite2D" parent="Level1"]
+scale = Vector2(29.4673, 16.8665)
+texture = ExtResource("6_1bx13")
+
+[node name="???" type="Label" parent="Level1"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1609.96
+offset_top = -160.46
+offset_right = -262.964
+offset_bottom = 182.54
+grow_horizontal = 2
+pivot_offset = Vector2(662.5, 72)
+theme_override_fonts/font = ExtResource("3_8s082")
+theme_override_font_sizes/font_size = 231
+text = "???"
+horizontal_alignment = 1
+
+[node name="Level2" type="Sprite2D" parent="."]
+position = Vector2(1343, 416)
+scale = Vector2(0.276446, 0.274328)
+texture = ExtResource("6_vywmn")
+
+[node name="White" type="Sprite2D" parent="Level2"]
+show_behind_parent = true
+position = Vector2(1.80878, 0.000470161)
+scale = Vector2(61.834, 35.7692)
+texture = ExtResource("5_yvvm3")
+
+[node name="Ocean" type="Label" parent="Level2"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1609.96
+offset_top = 539.728
+offset_right = -262.964
+offset_bottom = 882.728
+grow_horizontal = 2
+pivot_offset = Vector2(662.5, 72)
+theme_override_fonts/font = ExtResource("3_8s082")
+theme_override_font_sizes/font_size = 231
+text = "OCEAN"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Level2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1916.0
+offset_top = -1115.5
+offset_right = 30.0
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Blur" type="Sprite2D" parent="Level2"]
+position = Vector2(8.58307e-06, 0)
+scale = Vector2(30.0692, 16.8665)
+texture = ExtResource("6_1bx13")
+
+[node name="???" type="Label" parent="Level2"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1609.96
+offset_top = -160.46
+offset_right = -262.964
+offset_bottom = 182.54
+grow_horizontal = 2
+pivot_offset = Vector2(662.5, 72)
+theme_override_fonts/font = ExtResource("3_8s082")
+theme_override_font_sizes/font_size = 231
+text = "???"
+horizontal_alignment = 1
+
+[node name="Level3" type="Sprite2D" parent="."]
+position = Vector2(607, 828)
+scale = Vector2(0.277572, 0.277572)
+texture = ExtResource("7_akc44")
+
+[node name="White" type="Sprite2D" parent="Level3"]
+show_behind_parent = true
+position = Vector2(1.80878, 0.000470161)
+scale = Vector2(61.834, 35.7692)
+texture = ExtResource("5_yvvm3")
+
+[node name="Sky" type="Label" parent="Level3"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1609.96
+offset_top = 539.728
+offset_right = -262.964
+offset_bottom = 882.728
+grow_horizontal = 2
+pivot_offset = Vector2(662.5, 72)
+theme_override_fonts/font = ExtResource("3_8s082")
+theme_override_font_sizes/font_size = 231
+text = "SKY"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Level3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1916.0
+offset_top = -1115.5
+offset_right = 30.0
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Blur" type="Sprite2D" parent="Level3"]
+position = Vector2(-1.80143, 0)
+scale = Vector2(29.8909, 16.8665)
+texture = ExtResource("6_1bx13")
+
+[node name="???" type="Label" parent="Level3"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1609.96
+offset_top = -160.46
+offset_right = -262.964
+offset_bottom = 182.54
+grow_horizontal = 2
+pivot_offset = Vector2(662.5, 72)
+theme_override_fonts/font = ExtResource("3_8s082")
+theme_override_font_sizes/font_size = 231
+text = "???"
+horizontal_alignment = 1
+
+[node name="Level4" type="Sprite2D" parent="."]
+position = Vector2(1343, 834)
+scale = Vector2(0.275023, 0.275023)
+texture = ExtResource("8_7tl2x")
+
+[node name="White" type="Sprite2D" parent="Level4"]
+show_behind_parent = true
+position = Vector2(1.80878, 0.000470161)
+scale = Vector2(61.834, 35.7692)
+texture = ExtResource("5_yvvm3")
+
+[node name="Space" type="Label" parent="Level4"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1609.96
+offset_top = 539.728
+offset_right = -262.964
+offset_bottom = 882.728
+grow_horizontal = 2
+pivot_offset = Vector2(662.5, 72)
+theme_override_fonts/font = ExtResource("3_8s082")
+theme_override_font_sizes/font_size = 231
+text = "SPACE"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Level4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1916.0
+offset_top = -1115.5
+offset_right = 30.0
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Blur" type="Sprite2D" parent="Level4"]
+position = Vector2(1.8178, 0)
+scale = Vector2(29.9407, 16.8665)
+texture = ExtResource("6_1bx13")
+
+[node name="???" type="Label" parent="Level4"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1609.96
+offset_top = -160.46
+offset_right = -262.964
+offset_bottom = 182.54
+grow_horizontal = 2
+pivot_offset = Vector2(662.5, 72)
+theme_override_fonts/font = ExtResource("3_8s082")
+theme_override_font_sizes/font_size = 231
+text = "???"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -97.0
+offset_right = 184.0
+grow_vertical = 0
+pivot_offset = Vector2(1, 69)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.86
+theme = SubResource("Theme_3v41n")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_8s082")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7udca")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s13y7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_x0s4c")
+text = "Back"
+flat = true
+
+[node name="Transition" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(929, -598)
+scale = Vector2(2163, 1151)
+texture = SubResource("CanvasTexture_xvqp7")
+
+[node name="Transition" type="AnimationPlayer" parent="Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_rs2ko")
+}
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_y5b7w")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="Level1/Button" to="." method="_on_button_level1_pressed"]
+[connection signal="pressed" from="Level2/Button" to="." method="_on_button_level2_pressed"]
+[connection signal="pressed" from="Level3/Button" to="." method="_on_button_level4_pressed"]
+[connection signal="pressed" from="Level4/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="animation_finished" from="Transition/Transition" to="." method="_on_transition_animation_finished"]

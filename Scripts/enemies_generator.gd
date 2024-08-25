@@ -49,7 +49,7 @@ var narval_points
 
 func _ready() -> void:
 	parent = get_parent()
-	game_menager = get_node("/root/MainScene/GameMenager") 
+	game_menager = parent.get_node("GameMenager") 
 	player = parent.get_node("Player")
 	
 	# narval points

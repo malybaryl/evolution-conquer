@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://brdlcvxvpc7om"]
+[gd_scene load_steps=17 format=3 uid="uid://brdlcvxvpc7om"]
 
 [ext_resource type="Script" path="res://Scenes/settings.gd" id="1_hcfm4"]
 [ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="2_uu38h"]
@@ -53,6 +53,70 @@ bg_color = Color(0, 0, 0, 0.439216)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3ytc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ais6n"]
+specular_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ll0wi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(929, -598)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sqfs1"]
+resource_name = "transition"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(929, 541), Vector2(929, -598)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rs2ko"]
+_data = {
+"RESET": SubResource("Animation_ll0wi"),
+"transition": SubResource("Animation_sqfs1")
+}
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -281,6 +345,18 @@ theme_override_fonts/font = ExtResource("3_tcqbv")
 theme_override_font_sizes/font_size = 26
 text = "\"SPACE\" or \"ESC\" - to pause/unpause game"
 
+[node name="Transition" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 1)
+top_level = true
+position = Vector2(929, -598)
+scale = Vector2(2163, 1151)
+texture = SubResource("CanvasTexture_ais6n")
+
+[node name="Transition" type="AnimationPlayer" parent="CanvasLayer/Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_rs2ko")
+}
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_57f3h")
 autoplay = true
@@ -292,3 +368,4 @@ parameters/looping = true
 [connection signal="value_changed" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/HSlider2" to="." method="_on_h_slider_2_value_changed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer/Change" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer/Label4" method="_on_change_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/SAVE" to="." method="_on_save_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/Transition/Transition" to="." method="_on_transition_animation_finished"]

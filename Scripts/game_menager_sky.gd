@@ -29,6 +29,9 @@ func _ready() -> void:
 		cursor_texture = load("res://Assets/UI/Coursor/png/coursor.png")
 		Input.set_custom_mouse_cursor(cursor_texture)
 		
+		if not Global.sky_level_completed:
+			Global.sky_level_completed = true
+			
 		var start_transition = parent.get_node("Transition")
 		start_transition.play("start_transition")
 	
@@ -44,6 +47,7 @@ func add_points(number_of_point):
 	
 	
 	if points > 55 and fish_level:
+		# TODO add invicible time
 		tranform_sky_level_camera()
 		fish_level = false
 	
