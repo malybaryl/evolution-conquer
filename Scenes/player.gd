@@ -26,6 +26,13 @@ var invicible = true
 var paused = false
 @onready var pause_menu = preload("res://Scenes/pause_menu.tscn")
 
+# collision shape info
+@export var cell_shape = true
+@export var fish_shape = false
+@export var bird_shape = false
+@export var comet_shape = false
+
+
 func _ready():
 	parent = get_parent()
 	audio = get_node("Area2D/AudioEating")
@@ -63,9 +70,58 @@ func _ready():
 		scale.x = .5
 		scale.y = .5
 	
+	# shape
+	var cell_collision = get_node("Area2D/CollisionShape2D") as CollisionShape2D
+	var fish_collision = get_node("Area2D/CollisionShape2DFish")
+	var fish_collision_2 = get_node("Area2D/CollisionShape2DFish2")
+	var bird_collsion_1 = get_node("Area2D/CollisionShape2DBird")
+	var bird_collsion_2 = get_node("Area2D/CollisionShape2DBird2")
+	var comet_collision = get_node("Area2D/CollisionShape2DComet")
+	
+	if cell_shape:
+		cell_collision.disabled = false
+		fish_collision.disabled = true
+		fish_collision_2.disabled = true
+		bird_collsion_1.disabled = true
+		bird_collsion_2.disabled = true
+		comet_collision.disabled = true
+	elif fish_shape:
+		transform_to_fish()
+	elif bird_shape:
+		cell_collision.disabled = true
+		fish_collision.disabled = true
+		fish_collision_2.disabled = true
+		bird_collsion_1.disabled = false
+		bird_collsion_2.disabled = false
+		comet_collision.disabled = true
+	elif comet_shape:
+		cell_collision.disabled = true
+		fish_collision.disabled = true
+		fish_collision_2.disabled = true
+		bird_collsion_1.disabled = true
+		bird_collsion_2.disabled = true
+		comet_collision.disabled = false
+		
+	
 	# Uruchomienie timera na początku
 	timer.start()
 
+func transform_to_fish():
+	var cell_collision = get_node("Area2D/CollisionShape2D") as CollisionShape2D
+	var fish_collision = get_node("Area2D/CollisionShape2DFish")
+	var fish_collision_2 = get_node("Area2D/CollisionShape2DFish2")
+	var bird_collsion_1 = get_node("Area2D/CollisionShape2DBird")
+	var bird_collsion_2 = get_node("Area2D/CollisionShape2DBird2")
+	var comet_collision = get_node("Area2D/CollisionShape2DComet")
+	
+	cell_collision.disabled = true
+	fish_collision.disabled = false
+	fish_collision_2.disabled = false
+	bird_collsion_1.disabled = true
+	bird_collsion_2.disabled = true
+	comet_collision.disabled = true
+	
+	
 func pauseMenu():
 	if paused:
 		pause_menu_instance.queue_free()

@@ -153,6 +153,8 @@ position = Vector2(3690, 818)
 [node name="Player" parent="." instance=ExtResource("2_m6rr5")]
 scale = Vector2(0.34, 0.342742)
 space_level = true
+cell_shape = false
+comet_shape = true
 
 [node name="SpaceParticles" parent="Player" instance=ExtResource("7_5pejw")]
 show_behind_parent = true

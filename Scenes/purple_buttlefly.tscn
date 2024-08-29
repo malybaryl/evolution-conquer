@@ -26,7 +26,6 @@ scale = Vector2(8.375, 4.055)
 shape = SubResource("CircleShape2D_whjjk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
-visible = false
 position = Vector2(2, -1.90735e-06)
 rotation = 1.5519
 scale = Vector2(0.637714, 0.757285)

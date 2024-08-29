@@ -20,7 +20,7 @@ var loading_screen
 func _ready() -> void:
 	
 	parent = get_parent()
-	player = parent.get_node("Player") 	
+	player = parent.get_node("Player")
 	camera = player.get_node("Area2D/Camera2D") as Camera2D	
 	enemy_generator = parent.get_node("EnemiesGenerator") 
 	loading_screen = parent.get_node("LoadingScreen")
@@ -34,6 +34,7 @@ func _ready() -> void:
 	Input.set_custom_mouse_cursor(cursor_texture)
 	
 	if start_with_fish_level:
+		player.transform_to_fish()
 		loading_screen.visible = true
 		add_points(100)
 		next_level = true
@@ -57,6 +58,7 @@ func add_points(number_of_point):
 		if not Global.sea_level_completed:
 			Global.sea_level_completed = true
 		transform_to_fish_level()
+		player.transform_to_fish()
 		var enemies = get_tree().get_nodes_in_group("cell")
 		for enemy in enemies:
 			enemy.queue_free()

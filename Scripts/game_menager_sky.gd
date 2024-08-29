@@ -31,6 +31,7 @@ func _ready() -> void:
 		
 		if not Global.sky_level_completed:
 			Global.sky_level_completed = true
+		
 			
 		var start_transition = parent.get_node("Transition")
 		start_transition.play("start_transition")

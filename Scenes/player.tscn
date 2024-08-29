@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://i70yk16ub7it"]
+[gd_scene load_steps=31 format=3 uid="uid://i70yk16ub7it"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_osuoc"]
 [ext_resource type="Texture2D" uid="uid://d1gt57lehcawt" path="res://Assets/Characters/Cell/Cell_1/png/0.png" id="2_ws17x"]
@@ -22,7 +22,25 @@
 [ext_resource type="AudioStream" uid="uid://j1c61f5oukas" path="res://Assets/Audio/eating.wav" id="20_tt1gs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rvu37"]
-radius = 7.60188
+radius = 9.58325
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bl83q"]
+radius = 67.9896
+height = 335.989
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10nq4"]
+radius = 36.5451
+height = 270.004
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ubvvo"]
+radius = 1.94121
+height = 22.0982
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7f6xk"]
+size = Vector2(68, 389)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0hrbp"]
+radius = 123.911
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gbe8t"]
 animations = [{
@@ -154,6 +172,29 @@ autostart = true
 scale = Vector2(14.935, 14.935)
 shape = SubResource("CircleShape2D_rvu37")
 
+[node name="CollisionShape2DFish" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(57, 0)
+rotation = -1.57334
+shape = SubResource("CapsuleShape2D_bl83q")
+
+[node name="CollisionShape2DFish2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(183, -1)
+rotation = 3.13884
+shape = SubResource("CapsuleShape2D_10nq4")
+
+[node name="CollisionShape2DBird" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(47, 1)
+rotation = 1.56688
+scale = Vector2(14.935, 14.935)
+shape = SubResource("CapsuleShape2D_ubvvo")
+
+[node name="CollisionShape2DBird2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(94, -4.5)
+shape = SubResource("RectangleShape2D_7f6xk")
+
+[node name="CollisionShape2DComet" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0hrbp")
+
 [node name="Camera2D" type="Camera2D" parent="Area2D"]
 limit_left = -2750
 limit_top = -450
@@ -194,7 +235,7 @@ position = Vector2(-0.697639, 0.679422)
 rotation = 1.56249
 scale = Vector2(0.992171, 0.971598)
 sprite_frames = SubResource("SpriteFrames_gbe8t")
-animation = &"idle_bird"
+animation = &"idle_fish"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/AnimatedSprite2D"]
 libraries = {

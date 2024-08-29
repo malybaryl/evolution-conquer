@@ -89,12 +89,15 @@ height_negative = -2900
 sky_cheese = true
 
 [node name="background_sky" parent="." instance=ExtResource("5_mcrjx")]
+z_index = -1
 position = Vector2(17, -1068)
 
 [node name="Player" parent="." instance=ExtResource("4_4blit")]
 position = Vector2(6, -1061)
 scale = Vector2(0.34, 0.342742)
 sky_level = true
+cell_shape = false
+bird_shape = true
 
 [node name="Transition" type="AnimationPlayer" parent="."]
 libraries = {

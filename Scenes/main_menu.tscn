@@ -830,6 +830,21 @@ _data = {
 "title_animation": SubResource("Animation_66rk8")
 }
 
+[sub_resource type="Animation" id="Animation_ishmg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25, 1.14441e-05)]
+}
+
 [sub_resource type="Animation" id="Animation_r8eh4"]
 resource_name = "aroow_animation"
 length = 1.5
@@ -845,21 +860,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1642, 1901), Vector2(1642, 1904), Vector2(1642, 1901)]
-}
-
-[sub_resource type="Animation" id="Animation_ishmg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(25, 1.14441e-05)]
 }
 
 [sub_resource type="Animation" id="Animation_6k3ff"]
