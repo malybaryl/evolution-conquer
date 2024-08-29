@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @export var turn_on_first_level = false
 
@@ -72,6 +72,12 @@ func _ready() -> void:
 	
 	var transition = get_node("PlayTransition") as AnimationPlayer
 	transition.play_backwards("play_transition")
+	
+	var arrow_animation = get_node("UI/Version/Arrow/ArrowAnimation") as AnimationPlayer
+	arrow_animation.play("aroow_animation_2")
+	
+	var back_arrow_animation = get_node("UI/ChangesLog/ChangesLogArrow/ArrowAnimation") as AnimationPlayer
+	back_arrow_animation.play("aroow_animation")
 	
 func _process(delta: float) -> void:
 	if turn_on_first_level:
@@ -151,3 +157,23 @@ func _on_open_changes_log_pressed() -> void:
 func _on_close_changes_log_pressed() -> void:
 	var changes_log_animator = get_node("ChangesLogAnimation")
 	changes_log_animator.play_backwards("changes_log_animation")
+
+
+func _on_open_changes_log_mouse_entered() -> void:
+	if can_by_audio_played:
+		button_audio.play()
+		can_by_audio_played = false
+
+
+func _on_open_changes_log_mouse_exited() -> void:
+	can_by_audio_played = true
+
+
+func _on_close_changes_log_mouse_entered() -> void:
+	if can_by_audio_played:
+		button_audio.play()
+		can_by_audio_played = false
+
+
+func _on_close_changes_log_mouse_exited() -> void:
+	can_by_audio_played = true

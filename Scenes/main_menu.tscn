@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://riw4rhj70po0"]
+[gd_scene load_steps=80 format=3 uid="uid://riw4rhj70po0"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_0jw7o"]
 [ext_resource type="AudioStream" uid="uid://d2er1pwjqqrkb" path="res://Assets/Music/main_menu.mp3" id="2_f5q81"]
@@ -31,6 +31,7 @@
 [ext_resource type="SpriteFrames" uid="uid://uoydo7hdai3" path="res://Animations/Characters/Cell_2/cell_2_idle.tres" id="26_fwwbh"]
 [ext_resource type="Texture2D" uid="uid://dft1ryftnv0m6" path="res://Other/pngimg.com - linux_PNG1.png" id="30_ts4cp"]
 [ext_resource type="Texture2D" uid="uid://dfhtkq0li0gah" path="res://Other/white_circle.png" id="30_ukx31"]
+[ext_resource type="Texture2D" uid="uid://bu28acbda4g1l" path="res://Assets/UI/Arrows/arrow_1/png/arrow_1.png" id="30_wti4t"]
 
 [sub_resource type="Animation" id="Animation_y6tmo"]
 length = 0.001
@@ -829,6 +830,62 @@ _data = {
 "title_animation": SubResource("Animation_66rk8")
 }
 
+[sub_resource type="Animation" id="Animation_r8eh4"]
+resource_name = "aroow_animation"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.733333, 1.53333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1642, 1901), Vector2(1642, 1904), Vector2(1642, 1901)]
+}
+
+[sub_resource type="Animation" id="Animation_ishmg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25, 1.14441e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_6k3ff"]
+resource_name = "aroow_animation_2"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.733333, 1.53333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(24, 4), Vector2(24, 1), Vector2(24, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fnhv5"]
+_data = {
+"RESET": SubResource("Animation_ishmg"),
+"aroow_animation": SubResource("Animation_r8eh4"),
+"aroow_animation_2": SubResource("Animation_6k3ff")
+}
+
 [sub_resource type="Animation" id="Animation_fnkbj"]
 length = 0.001
 tracks/0/type = "value"
@@ -907,9 +964,6 @@ specular_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_hqoli"]
 length = 0.001
-
-[sub_resource type="Animation" id="Animation_pkb1r"]
-resource_name = "changes_log_animation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -917,22 +971,37 @@ tracks/0/path = NodePath("UI/ChangesLog:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.2, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1373, 1500), Vector2(1373, 600)]
+"values": [Vector2(0, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/Version:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+
+[sub_resource type="Animation" id="Animation_pkb1r"]
+resource_name = "changes_log_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Version:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1848, 1020), Vector2(1848, 1100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/ChangesLog:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -876)]
 }
 
 [sub_resource type="Animation" id="Animation_ho04y"]
@@ -945,7 +1014,13 @@ _data = {
 "new_animation": SubResource("Animation_ho04y")
 }
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_0jw7o")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
@@ -1164,15 +1239,28 @@ anchor_left = 0.981
 anchor_top = 1.0
 anchor_right = 0.981
 anchor_bottom = 1.0
-offset_left = -35.52
+offset_left = -34.52
 offset_top = -60.0
-offset_right = 4.47998
+offset_right = 5.47998
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(23, 39)
 
-[node name="OpenChangesLog" type="Button" parent="UI/Version"]
-layout_mode = 2
+[node name="Arrow" type="Sprite2D" parent="UI/Version"]
+position = Vector2(25, 1.14441e-05)
+scale = Vector2(0.22, 0.2)
+texture = ExtResource("30_wti4t")
+
+[node name="OpenChangesLog" type="Button" parent="UI/Version/Arrow"]
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.35
+anchor_right = 0.497
+anchor_bottom = 0.35
+offset_left = -172.4
+offset_top = -160.0
+offset_right = -27.4
+offset_bottom = -40.0
 size_flags_stretch_ratio = 0.86
 theme = SubResource("Theme_sbm4e")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -1182,8 +1270,12 @@ theme_override_font_sizes/font_size = 11
 theme_override_styles/focus = SubResource("StyleBoxEmpty_u4hws")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7p7xd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cm6q4")
-text = "button"
 flat = true
+
+[node name="ArrowAnimation" type="AnimationPlayer" parent="UI/Version/Arrow"]
+libraries = {
+"": SubResource("AnimationLibrary_fnhv5")
+}
 
 [node name="Version" type="Label" parent="UI/Version"]
 layout_mode = 2
@@ -1192,14 +1284,17 @@ theme_override_font_sizes/font_size = 26
 text = "1.1"
 horizontal_alignment = 2
 
-[node name="ChangesLog" type="VBoxContainer" parent="UI"]
-layout_mode = 0
-offset_left = 1373.0
-offset_top = 1500.0
-offset_right = 1897.0
-offset_bottom = 3759.0
+[node name="ChangesLog" type="Node2D" parent="UI"]
 
-[node name="ChangesLogTitle" type="Label" parent="UI/ChangesLog"]
+[node name="ChangesLog" type="VBoxContainer" parent="UI/ChangesLog"]
+offset_left = 1373.0
+offset_top = 1462.5
+offset_right = 1897.0
+offset_bottom = 1936.5
+pivot_offset = Vector2(251, 454)
+metadata/_edit_use_anchors_ = true
+
+[node name="ChangesLogTitle" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 26
@@ -1207,7 +1302,7 @@ text = "CHANGES LOG"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Version1_1" type="Label" parent="UI/ChangesLog"]
+[node name="Version1_1" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
@@ -1215,14 +1310,14 @@ text = "--- Version 1.1 ---"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Log2" type="Label" parent="UI/ChangesLog"]
+[node name="Log2" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
 text = "-> Added Changes log."
 vertical_alignment = 1
 
-[node name="Log3" type="Label" parent="UI/ChangesLog"]
+[node name="Log3" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
@@ -1230,26 +1325,26 @@ text = "-> Level selection (now after completed level you can play from there)."
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Log4" type="Label" parent="UI/ChangesLog"]
+[node name="Log4" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
 text = "-> Now you can play \"Evolution Conquer\" on Linux."
 vertical_alignment = 1
 
-[node name="WhiteCircle" type="Sprite2D" parent="UI/ChangesLog/Log4"]
+[node name="WhiteCircle" type="Sprite2D" parent="UI/ChangesLog/ChangesLog/Log4"]
 show_behind_parent = true
 position = Vector2(439, 2.62086)
 scale = Vector2(0.0443513, -0.0986004)
 texture = ExtResource("30_ukx31")
 
-[node name="Pngimg_com-LinuxPng1" type="Sprite2D" parent="UI/ChangesLog/Log4"]
+[node name="Pngimg_com-LinuxPng1" type="Sprite2D" parent="UI/ChangesLog/ChangesLog/Log4"]
 show_behind_parent = true
 position = Vector2(439, 11)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("30_ts4cp")
 
-[node name="Log5" type="Label" parent="UI/ChangesLog"]
+[node name="Log5" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
@@ -1257,7 +1352,7 @@ text = "-> New enemy respawn mechanics."
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Log6" type="Label" parent="UI/ChangesLog"]
+[node name="Log6" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
@@ -1265,7 +1360,7 @@ text = "-> Enemies type Cell are now slower and more predictable."
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Log7" type="Label" parent="UI/ChangesLog"]
+[node name="Log7" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
@@ -1273,7 +1368,7 @@ text = "-> Settings fixed."
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Log8" type="Label" parent="UI/ChangesLog"]
+[node name="Log8" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
@@ -1281,7 +1376,7 @@ text = "-> Rebuild Water Level (More of enemies have new mechanics)."
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Log9" type="Label" parent="UI/ChangesLog"]
+[node name="Log9" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
@@ -1289,7 +1384,7 @@ text = "-> Rebuild Sky Level (More of enemies have new mechanics)."
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Log10" type="Label" parent="UI/ChangesLog"]
+[node name="Log10" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
@@ -1297,7 +1392,7 @@ text = "-> Now settings and proggress are saved and won't change if you turn on 
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Log11" type="Label" parent="UI/ChangesLog"]
+[node name="Log11" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
@@ -1305,7 +1400,7 @@ text = "-> New collisions shapes of player and enemies."
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Log12" type="Label" parent="UI/ChangesLog"]
+[node name="Log12" type="Label" parent="UI/ChangesLog/ChangesLog"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
@@ -1313,9 +1408,24 @@ text = "-> Added evolution bar"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="CloseChangesLog" type="Button" parent="UI/ChangesLog"]
-layout_mode = 2
-size_flags_stretch_ratio = 0.86
+[node name="ChangesLogArrow" type="Sprite2D" parent="UI/ChangesLog"]
+position = Vector2(25, 1.14441e-05)
+rotation = -3.14125
+scale = Vector2(0.22, 0.2)
+texture = ExtResource("30_wti4t")
+
+[node name="CloseChangesLog" type="Button" parent="UI/ChangesLog/ChangesLogArrow"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.367
+anchor_right = 0.5
+anchor_bottom = 0.367
+offset_left = -178.0
+offset_top = -167.4
+offset_right = -157.0
+offset_bottom = -147.4
+scale = Vector2(7.39971, 7.39971)
+size_flags_stretch_ratio = 0.99
 theme = SubResource("Theme_sbm4e")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
@@ -1324,8 +1434,12 @@ theme_override_font_sizes/font_size = 11
 theme_override_styles/focus = SubResource("StyleBoxEmpty_u4hws")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7p7xd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cm6q4")
-text = "button"
 flat = true
+
+[node name="ArrowAnimation" type="AnimationPlayer" parent="UI/ChangesLog/ChangesLogArrow"]
+libraries = {
+"": SubResource("AnimationLibrary_fnhv5")
+}
 
 [node name="PlayTransition" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1344,21 +1458,19 @@ libraries = {
 }
 
 [connection signal="finished" from="Button" to="." method="_on_button_finished"]
-[connection signal="focus_entered" from="UI/VBoxContainer/StartButton" to="." method="_on_start_button_focus_entered"]
-[connection signal="focus_exited" from="UI/VBoxContainer/StartButton" to="." method="_on_start_button_focus_exited"]
 [connection signal="mouse_entered" from="UI/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_exited"]
 [connection signal="pressed" from="UI/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="focus_entered" from="UI/VBoxContainer/SettingsButton" to="." method="_on_settings_button_focus_entered"]
-[connection signal="focus_exited" from="UI/VBoxContainer/SettingsButton" to="." method="_on_settings_button_focus_exited"]
 [connection signal="mouse_entered" from="UI/VBoxContainer/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/VBoxContainer/SettingsButton" to="." method="_on_settings_button_mouse_exited"]
 [connection signal="pressed" from="UI/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="focus_entered" from="UI/VBoxContainer/QuitButton" to="." method="_on_quit_button_focus_entered"]
-[connection signal="focus_exited" from="UI/VBoxContainer/QuitButton" to="." method="_on_quit_button_focus_exited"]
 [connection signal="mouse_entered" from="UI/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_exited"]
 [connection signal="pressed" from="UI/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="UI/Version/OpenChangesLog" to="." method="_on_open_changes_log_pressed"]
-[connection signal="pressed" from="UI/ChangesLog/CloseChangesLog" to="." method="_on_close_changes_log_pressed"]
+[connection signal="mouse_entered" from="UI/Version/Arrow/OpenChangesLog" to="." method="_on_open_changes_log_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Version/Arrow/OpenChangesLog" to="." method="_on_open_changes_log_mouse_exited"]
+[connection signal="pressed" from="UI/Version/Arrow/OpenChangesLog" to="." method="_on_open_changes_log_pressed"]
+[connection signal="mouse_entered" from="UI/ChangesLog/ChangesLogArrow/CloseChangesLog" to="." method="_on_close_changes_log_mouse_entered"]
+[connection signal="mouse_exited" from="UI/ChangesLog/ChangesLogArrow/CloseChangesLog" to="." method="_on_close_changes_log_mouse_exited"]
+[connection signal="pressed" from="UI/ChangesLog/ChangesLogArrow/CloseChangesLog" to="." method="_on_close_changes_log_pressed"]
 [connection signal="animation_finished" from="PlayTransition" to="." method="_on_play_transition_animation_finished"]
