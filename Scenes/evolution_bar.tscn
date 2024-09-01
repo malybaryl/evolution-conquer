@@ -1,0 +1,143 @@
+[gd_scene load_steps=12 format=3 uid="uid://c7hbtft7gkdtd"]
+
+[ext_resource type="FontFile" uid="uid://x474cgkwo2ij" path="res://Assets/Fonts/Matemasie-Regular.ttf" id="1_c5txc"]
+[ext_resource type="Texture2D" uid="uid://c7gq65id18vai" path="res://Assets/UI/EvolutionBars/bar1/evolution_bar.png" id="1_jkfba"]
+[ext_resource type="Script" path="res://Scripts/evolution_bar.gd" id="1_rgdyc"]
+[ext_resource type="Texture2D" uid="uid://b4018rs3afaoy" path="res://Assets/UI/EvolutionBars/bar1/back.png" id="2_2wa4m"]
+[ext_resource type="Texture2D" uid="uid://d0jufmqum3sjr" path="res://Assets/UI/EvolutionBars/bar2/back.png" id="4_jtjdd"]
+[ext_resource type="Texture2D" uid="uid://bfltbqg08yqd3" path="res://Assets/UI/EvolutionBars/bar2/evolution_bar.png" id="5_u7im3"]
+[ext_resource type="Texture2D" uid="uid://coy5nf5sgcgj4" path="res://Assets/UI/EvolutionBars/bar3/back.png" id="6_xsmui"]
+[ext_resource type="Texture2D" uid="uid://i4ud2rcqm8eh" path="res://Assets/UI/EvolutionBars/bar3/evolution_bar.png" id="7_oiqdu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcghg"]
+bg_color = Color(4.09111e-06, 0.724811, 0.221229, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qb6gy"]
+bg_color = Color(3.56168e-06, 0.675093, 0.761591, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22bl0"]
+bg_color = Color(1, 0.201992, 0.731189, 1)
+
+[node name="EvolutionBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rgdyc")
+first_stage = false
+
+[node name="FirstStage" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Back" type="Sprite2D" parent="FirstStage"]
+z_index = -1
+position = Vector2(9, -1)
+texture = ExtResource("2_2wa4m")
+offset = Vector2(-9, -105)
+
+[node name="ProgressBar" type="ProgressBar" parent="FirstStage"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -796.0
+offset_top = -21.0
+offset_right = 790.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_c5txc")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/fill = SubResource("StyleBoxFlat_fcghg")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="Fromt" type="Sprite2D" parent="FirstStage"]
+z_index = 1
+position = Vector2(9, -1)
+texture = ExtResource("1_jkfba")
+offset = Vector2(-9, -105)
+
+[node name="SecondStage" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Back" type="Sprite2D" parent="SecondStage"]
+z_index = -1
+position = Vector2(9, -1)
+texture = ExtResource("4_jtjdd")
+offset = Vector2(-9, -105)
+
+[node name="ProgressBar" type="ProgressBar" parent="SecondStage"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -796.0
+offset_top = -21.0
+offset_right = 790.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_c5txc")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/fill = SubResource("StyleBoxFlat_qb6gy")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="Fromt" type="Sprite2D" parent="SecondStage"]
+z_index = 1
+position = Vector2(9, -1)
+texture = ExtResource("5_u7im3")
+offset = Vector2(-9, -105)
+
+[node name="ThirdStage" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Back" type="Sprite2D" parent="ThirdStage"]
+z_index = -1
+position = Vector2(9, -1)
+texture = ExtResource("6_xsmui")
+offset = Vector2(-9, -105)
+
+[node name="ProgressBar" type="ProgressBar" parent="ThirdStage"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -796.0
+offset_top = -21.0
+offset_right = 790.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_c5txc")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/fill = SubResource("StyleBoxFlat_22bl0")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="Fromt" type="Sprite2D" parent="ThirdStage"]
+z_index = 1
+position = Vector2(9, -1)
+texture = ExtResource("7_oiqdu")
+offset = Vector2(-9, -105)

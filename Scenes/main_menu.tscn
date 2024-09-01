@@ -859,7 +859,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.733333, 1.53333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1642, 1901), Vector2(1642, 1904), Vector2(1642, 1901)]
+"values": [Vector2(1642, 1930), Vector2(1642, 1933), Vector2(1642, 1930)]
 }
 
 [sub_resource type="Animation" id="Animation_6k3ff"]
@@ -1405,6 +1405,14 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rk655")
 theme_override_font_sizes/font_size = 16
 text = "-> Added evolution bar"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Log13" type="Label" parent="UI/ChangesLog/ChangesLog"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rk655")
+theme_override_font_sizes/font_size = 16
+text = "-> Small bugs fixes"
 vertical_alignment = 1
 autowrap_mode = 2
 

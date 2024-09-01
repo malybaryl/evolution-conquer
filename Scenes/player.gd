@@ -33,10 +33,13 @@ var paused = false
 @export var comet_shape = false
 
 
+
+
 func _ready():
 	parent = get_parent()
 	audio = get_node("Area2D/AudioEating")
 	timer = get_node("Timer")
+	
 	
 	var audio = get_node("Area2D/AudioEating")
 	audio.volume_db = (Global.float_to_db(Global.SFX))
@@ -144,7 +147,7 @@ func _process(delta):
 		var direction = (mouse_position - global_position).normalized()
 		var distance_to_mouse = global_position.distance_to(mouse_position)
 		
-		if distance_to_mouse > .1:  # Dystans, przy którym postać zaczyna się poruszać
+		if distance_to_mouse > 25:  # Dystans, przy którym postać zaczyna się poruszać
 			global_position += direction * speed * delta
 			
 			# Ustawienie emisji cząsteczek w przeciwnym kierunku do ruchu
@@ -157,6 +160,7 @@ func _process(delta):
 		
 		# Obracanie postaci w kierunku kursora
 		rotation = (mouse_position - global_position).angle()
+		
 
 func cheese_entered(area: Area2D):
 	if not sky_level and not space_level:
@@ -237,8 +241,14 @@ func enemy_entered(area: Area2D):
 			if game_menager.planets_to_destroy:
 				game_menager.planets_to_destroy = game_menager.planets_to_destroy - 1
 	elif area.is_in_group("danger"):
-		queue_free()
-		game_over()
+		if enemy_scale * 3 > scale.x:
+			queue_free()
+			game_over()
+		elif enemy_scale * 3 < scale.x:
+			game_menager.add_points(enemy_scale * 15)
+			enemies_generator.init_fish("random")
+			area.queue_free()
+			play_audio()
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if not invicible:

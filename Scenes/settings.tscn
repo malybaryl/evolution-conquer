@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://brdlcvxvpc7om"]
+[gd_scene load_steps=19 format=3 uid="uid://brdlcvxvpc7om"]
 
 [ext_resource type="Script" path="res://Scenes/settings.gd" id="1_hcfm4"]
 [ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="2_uu38h"]
 [ext_resource type="FontFile" uid="uid://x474cgkwo2ij" path="res://Assets/Fonts/Matemasie-Regular.ttf" id="3_tcqbv"]
 [ext_resource type="Script" path="res://Scenes/label_4.gd" id="4_6aq8q"]
 [ext_resource type="AudioStream" uid="uid://ccde62p3r7oil" path="res://Assets/Music/deep_sea.mp3" id="4_57f3h"]
+[ext_resource type="Script" path="res://Scripts/settings_show_evolution_bar.gd" id="5_koepq"]
 
 [sub_resource type="Animation" id="Animation_y6tmo"]
 length = 0.001
@@ -53,6 +54,8 @@ bg_color = Color(0, 0, 0, 0.439216)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3ytc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v34ic"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ais6n"]
 specular_color = Color(0, 0, 0, 1)
@@ -345,6 +348,26 @@ theme_override_fonts/font = ExtResource("3_tcqbv")
 theme_override_font_sizes/font_size = 26
 text = "\"SPACE\" or \"ESC\" - to pause/unpause game"
 
+[node name="Label5" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tcqbv")
+theme_override_font_sizes/font_size = 64
+text = "
+"
+
+[node name="Label3" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tcqbv")
+theme_override_font_sizes/font_size = 64
+text = "GAME"
+
+[node name="CheckButton" type="CheckBox" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tcqbv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v34ic")
+text = "Show \"Evolution Bar\""
+script = ExtResource("5_koepq")
+
 [node name="Transition" type="Sprite2D" parent="CanvasLayer"]
 modulate = Color(0, 0, 0, 1)
 top_level = true
@@ -368,4 +391,5 @@ parameters/looping = true
 [connection signal="value_changed" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/HSlider2" to="." method="_on_h_slider_2_value_changed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer/Change" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer/Label4" method="_on_change_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/SAVE" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer2/CheckButton" to="CanvasLayer/HBoxContainer/VBoxContainer2/CheckButton" method="_on_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/Transition/Transition" to="." method="_on_transition_animation_finished"]

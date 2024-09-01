@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://fjn6ihhwy7ow"]
+[gd_scene load_steps=4 format=3 uid="uid://db36fn7knc6m5"]
 
 [sub_resource type="Gradient" id="Gradient_g3yyv"]
 colors = PackedColorArray(0, 0.992157, 0.847059, 1, 0, 0, 1, 1)

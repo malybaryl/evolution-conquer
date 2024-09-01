@@ -1,17 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://csyh5ce7yysfu"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_xtklf"]
+[ext_resource type="Script" path="res://Scripts/cell.gd" id="1_07pdu"]
 [ext_resource type="SpriteFrames" uid="uid://cr6tc5c16gya0" path="res://Animations/Characters/Cell_3/cell_3_idle.tres" id="2_nmil6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6m1uf"]
+radius = 9.0
 
 [node name="CellPurple" type="CharacterBody2D" groups=["cell", "enemy"]]
-script = ExtResource("1_xtklf")
+script = ExtResource("1_07pdu")
 
 [node name="Area2D" type="Area2D" parent="." groups=["cell", "enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -14)
+position = Vector2(2, -2)
 scale = Vector2(15.175, 15.175)
 shape = SubResource("CircleShape2D_6m1uf")
 

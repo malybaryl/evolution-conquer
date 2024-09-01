@@ -15,6 +15,12 @@ var fish_level = true
 
 @export var sky_level = false
 
+@onready var progress_bar_scene = preload("res://Scenes/evolution_bar.tscn")
+var progress_bar
+
+var UI
+var reload = true
+
 func _ready() -> void:
 	parent = get_parent()
 	var music = parent.get_node("Music")
@@ -24,6 +30,15 @@ func _ready() -> void:
 		camera = player.get_node("Area2D/Camera2D") as Camera2D
 		camera_to_transform = player.get_node("Area2D/Camera2DSky2") as Camera2D
 		enemy_generator = parent.get_node("EnemiesGenerator")
+		UI = parent.get_node("UI")
+	
+		if Global.show_evolution_bar:
+			progress_bar = progress_bar_scene.instantiate()
+			UI.add_child(progress_bar)
+			print("Progress bar instantiated and added to the scene.")
+		
+			 # Start with the first stage
+			print("Progress bar set to stage 1.")
 		
 		# coursor handling
 		cursor_texture = load("res://Assets/UI/Coursor/png/coursor.png")
@@ -31,10 +46,19 @@ func _ready() -> void:
 		
 		if not Global.sky_level_completed:
 			Global.sky_level_completed = true
-		
+		if Global.show_evolution_bar:
+			progress_bar.set_stage(3) 
+		UI.visible = false
 			
 		var start_transition = parent.get_node("Transition")
 		start_transition.play("start_transition")
+	
+func _process(delta: float) -> void:
+	if reload:
+		reload = false
+		if Global.show_evolution_bar:
+			progress_bar.set_stage(3) 
+		
 	
 
 func add_points(number_of_point):
@@ -46,6 +70,8 @@ func add_points(number_of_point):
 		return
 	print("number of points: ", points)
 	
+	if Global.show_evolution_bar:
+		progress_bar.set_value(points, 400)
 	
 	if points > 55 and fish_level:
 		# TODO add invicible time
@@ -77,3 +103,7 @@ func tranform_sky_level_camera():
 	
 	
 	
+
+
+func _on_transition_animation_finished(anim_name: StringName) -> void:
+	UI.visible = true

@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8fmxfnjjpf3y"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_n53y1"]
+[ext_resource type="Script" path="res://Scripts/cell.gd" id="1_i75cu"]
 [ext_resource type="SpriteFrames" uid="uid://uoydo7hdai3" path="res://Animations/Characters/Cell_2/cell_2_idle.tres" id="2_b3xx2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lqq8i"]
 radius = 5.27224
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krciw"]
-size = Vector2(12.0428, 13.1796)
+size = Vector2(10.3707, 2.04285)
 
 [node name="RedCell" type="CharacterBody2D" groups=["cell", "enemy"]]
-script = ExtResource("1_n53y1")
+script = ExtResource("1_i75cu")
 
 [node name="Area2D" type="Area2D" parent="." groups=["cell", "enemy"]]
 
@@ -20,7 +20,14 @@ scale = Vector2(15.175, 15.175)
 shape = SubResource("CircleShape2D_lqq8i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(150.625, 10)
+position = Vector2(170, 84)
+rotation = 0.312171
+scale = Vector2(15.175, 15.175)
+shape = SubResource("RectangleShape2D_krciw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(154, -68)
+rotation = -0.223378
 scale = Vector2(15.175, 15.175)
 shape = SubResource("RectangleShape2D_krciw")
 

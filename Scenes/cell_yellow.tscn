@@ -1,14 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://klyvjkq12qe6"]
 
 [ext_resource type="SpriteFrames" uid="uid://cdl70mgihggjc" path="res://Animations/Characters/Cell_4/cell_4_idle.tres" id="1_3y47d"]
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_pda8i"]
+[ext_resource type="Script" path="res://Scripts/cell.gd" id="1_37s1d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5bqgx"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tuymu"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3cdc3"]
+radius = 3.22899
+height = 23.3278
 
 [node name="CellYellow" type="CharacterBody2D" groups=["cell", "enemy"]]
-script = ExtResource("1_pda8i")
+script = ExtResource("1_37s1d")
 
 [node name="Area2D" type="Area2D" parent="." groups=["cell", "enemy"]]
 
@@ -17,6 +19,11 @@ position = Vector2(0, 3)
 scale = Vector2(15.175, 15.175)
 shape = SubResource("CircleShape2D_5bqgx")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(261, -1)
+scale = Vector2(15.175, 15.175)
+shape = SubResource("CapsuleShape2D_3cdc3")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 position = Vector2(93.9022, 13.8272)
 rotation = 1.57244
@@ -24,8 +31,3 @@ scale = Vector2(1.5474, 1.47955)
 sprite_frames = ExtResource("1_3y47d")
 animation = &"idle"
 frame_progress = 0.735716
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
-position = Vector2(0, 3)
-scale = Vector2(15.175, 15.175)
-shape = SubResource("CircleShape2D_tuymu")

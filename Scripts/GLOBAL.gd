@@ -13,3 +13,6 @@ var deep_sea_level_completed = false
 var sea_level_completed = false
 var sky_level_completed = false
 var space_level_completed = false
+
+# UI info
+var show_evolution_bar = true
