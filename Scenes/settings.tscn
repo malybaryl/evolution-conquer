@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://brdlcvxvpc7om"]
+[gd_scene load_steps=20 format=3 uid="uid://brdlcvxvpc7om"]
 
 [ext_resource type="Script" path="res://Scenes/settings.gd" id="1_hcfm4"]
 [ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="2_uu38h"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/label_4.gd" id="4_6aq8q"]
 [ext_resource type="AudioStream" uid="uid://ccde62p3r7oil" path="res://Assets/Music/deep_sea.mp3" id="4_57f3h"]
 [ext_resource type="Script" path="res://Scripts/settings_show_evolution_bar.gd" id="5_koepq"]
+[ext_resource type="Script" path="res://Scripts/settings_fullscreen.gd" id="5_koy0d"]
 
 [sub_resource type="Animation" id="Animation_y6tmo"]
 length = 0.001
@@ -308,6 +309,7 @@ theme_override_fonts/font = ExtResource("3_tcqbv")
 theme_override_font_sizes/font_size = 26
 text = "fullscreen"
 horizontal_alignment = 1
+script = ExtResource("5_koy0d")
 
 [node name="SAVE" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -383,6 +385,7 @@ libraries = {
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_57f3h")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]
@@ -390,6 +393,7 @@ parameters/looping = true
 [connection signal="value_changed" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer2/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/HSlider2" to="." method="_on_h_slider_2_value_changed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer/Change" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer/Label4" method="_on_change_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer4/Change" to="." method="_on_change_fullscreen_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/SAVE" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer2/CheckButton" to="CanvasLayer/HBoxContainer/VBoxContainer2/CheckButton" method="_on_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/Transition/Transition" to="." method="_on_transition_animation_finished"]

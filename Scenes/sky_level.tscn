@@ -78,6 +78,7 @@ specular_color = Color(0, 0, 0, 1)
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_a78so")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="GameMenagerSky" parent="." instance=ExtResource("1_ym331")]

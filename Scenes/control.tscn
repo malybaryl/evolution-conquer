@@ -569,6 +569,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 script = ExtResource("5_me0n8")
 
 [connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]

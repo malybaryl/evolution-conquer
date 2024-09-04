@@ -165,6 +165,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 script = ExtResource("6_jk0w7")
 
 [connection signal="animation_finished" from="CanvasLayer/SunFace" to="." method="_on_sun_face_animation_finished"]

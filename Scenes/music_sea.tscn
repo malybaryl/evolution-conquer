@@ -5,4 +5,5 @@
 [node name="MusicSea" type="AudioStreamPlayer"]
 stream = ExtResource("1_m0c23")
 autoplay = true
+bus = &"Music"
 parameters/looping = true

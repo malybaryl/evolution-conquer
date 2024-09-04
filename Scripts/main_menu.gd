@@ -15,7 +15,20 @@ var choose_level_scene = "res://Scenes/choose_level.tscn"
 
 
 func _ready() -> void:
+	# display
+	var resolution = Global.resolution
+	var fullscreen = Global.fullscreen
 	
+	if resolution and resolution[0] > 100 and resolution[1] > 100:
+		DisplayServer.window_set_size(Vector2i(resolution[0],resolution[1]))
+	else:
+		DisplayServer.window_set_size(Vector2i(1280,720))
+	
+	if fullscreen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		
 	# audio
 	button_audio = get_node("Button") as AudioStreamPlayer
 	button_audio.volume_db = (Global.float_to_db(Global.SFX))

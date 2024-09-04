@@ -44,6 +44,7 @@ var game_menager
 var parent
 var player_mesh = 600
 var player
+var player_spawn_radious_node
 
 var narval_points
 
@@ -51,6 +52,7 @@ func _ready() -> void:
 	parent = get_parent()
 	game_menager = parent.get_node("GameMenager") 
 	player = parent.get_node("Player")
+	player_spawn_radious_node = player.get_node("Area2DEnemySpawner")
 	
 	# narval points
 	narval_points = [
@@ -172,8 +174,13 @@ func init_cells(name, attempts = 10):
 			init_cells(name, attempts - 1)
 			return
 		
-	inistance.position.x = position_x
-	inistance.position.y = position_y
+	# generate position
+	var cords = player_spawn_radious_node.get_spawn_position()
+	if cords:
+		inistance.position.x = cords[0]
+		inistance.position.y = cords[1]
+	
+	# manage cell scale
 	if game_menager.points < 100:
 		inistance.scale.x = cell_scale
 		inistance.scale.y = cell_scale

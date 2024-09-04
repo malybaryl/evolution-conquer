@@ -64,6 +64,7 @@ script = ExtResource("1_amajh")
 
 [node name="AudioButton" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_sbwbk")
+bus = &"Sfx"
 
 [node name="Background_space" parent="." instance=ExtResource("2_fepr7")]
 position = Vector2(951, 514)

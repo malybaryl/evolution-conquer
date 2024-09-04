@@ -105,6 +105,7 @@ flat = true
 
 [node name="AudioButton" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource("3_qnwil")
+bus = &"Sfx"
 
 [connection signal="mouse_entered" from="CanvasLayer/VBoxContainer2/Back" to="." method="_on_back_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/VBoxContainer2/Back" to="." method="_on_back_mouse_exited"]

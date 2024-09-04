@@ -1026,9 +1026,11 @@ script = ExtResource("1_0jw7o")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_f5q81")
 autoplay = true
+bus = &"Music"
 
 [node name="Button" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_drvyf")
+bus = &"Sfx"
 
 [node name="Background_space" parent="." instance=ExtResource("2_p1dxh")]
 position = Vector2(951, 514)
@@ -1168,7 +1170,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.744489, 0.730927)
 pivot_offset = Vector2(301.291, 239.212)
-metadata/_edit_use_anchors_ = true
 
 [node name="StartButton" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://i70yk16ub7it"]
+[gd_scene load_steps=33 format=3 uid="uid://i70yk16ub7it"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_osuoc"]
 [ext_resource type="Texture2D" uid="uid://d1gt57lehcawt" path="res://Assets/Characters/Cell/Cell_1/png/0.png" id="2_ws17x"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://mt3t8h4s7pxn" path="res://Assets/Characters/Fish/Fish_1/png/6.png" id="14_575mf"]
 [ext_resource type="Texture2D" uid="uid://3og2rvqal026" path="res://Assets/Characters/Fish/Fish_1/png/7.png" id="15_belto"]
 [ext_resource type="AudioStream" uid="uid://j1c61f5oukas" path="res://Assets/Audio/eating.wav" id="20_tt1gs"]
+[ext_resource type="Script" path="res://Scenes/player_enemy_spawner.gd" id="21_kudw8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rvu37"]
 radius = 9.58325
@@ -160,6 +161,9 @@ _data = {
 "rotating": SubResource("Animation_m26th")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2778"]
+radius = 1200.0
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_osuoc")
 
@@ -244,6 +248,13 @@ libraries = {
 
 [node name="AudioEating" type="AudioStreamPlayer" parent="Area2D"]
 stream = ExtResource("20_tt1gs")
+bus = &"Sfx"
+
+[node name="Area2DEnemySpawner" type="Area2D" parent="."]
+script = ExtResource("21_kudw8")
+
+[node name="SpawnRadious" type="CollisionShape2D" parent="Area2DEnemySpawner"]
+shape = SubResource("CircleShape2D_n2778")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

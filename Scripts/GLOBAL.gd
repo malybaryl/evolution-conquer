@@ -6,6 +6,10 @@ var SFX = .5
 
 func float_to_db(volume :float):
 	return 20 * (log(volume) / log(10))
+	
+var resolution = [1280,720] as Array
+var resolution_index = 0
+var fullscreen = false
 
 
 # game info
