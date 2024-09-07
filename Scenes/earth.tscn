@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dhatd13s41mnt"]
 
 [ext_resource type="Texture2D" uid="uid://mgfngjcs5unn" path="res://Assets/Characters/Coments/comet_2/png/coment_2.png" id="1_mqisg"]
-[ext_resource type="Script" path="res://Scenes/earth.gd" id="1_y5buo"]
+[ext_resource type="Script" path="res://Scripts/earth.gd" id="1_y5buo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ps1m"]
 

@@ -1,12 +1,12 @@
-extends CharacterBody2D  # Dla Godot 4.0
+extends CharacterBody2D  
 
-# Definiujemy prędkość ruchu
+
 var speed = 100
-# Czas zmiany kierunku
+
 var change_direction_time 
-# Zmienna przechowująca czas do zmiany kierunku
-var time_left_to_change = 0.0
-# Aktualny kierunek ruchu
+
+var time_left_to_change = 1
+
 var direction = Vector2()
 
 @export var width = 2750
@@ -15,24 +15,24 @@ var direction = Vector2()
 @export var height_negative = -450
 
 func _ready():
-	speed = randf_range(50, 100)
-	change_direction_time = randf_range(5, 10)
-	# animacja
+	speed = 250
+	time_left_to_change = 1
+
 	$Area2D/AnimatedSprite2D.play("idle")
-	# Ustawienie losowego kierunku na start
+
 	change_direction()
-	# Ustawienie pierwszej zmiany kierunku po upływie change_direction_time
+	
 	time_left_to_change = change_direction_time
 	
 
 func _process(delta):
-	# Odliczanie czasu do zmiany kierunku
-	time_left_to_change -= delta
-	if time_left_to_change <= 0:
-		change_direction()
-		time_left_to_change = change_direction_time
 	
-	# Sprawdzenie krawędzi mapy i zawracanie
+	#time_left_to_change -= delta
+	#if time_left_to_change <= 0:
+		#change_direction()
+		#time_left_to_change = change_direction_time
+	
+
 	if position.x > width:
 		direction = Vector2(-1, 0)
 	elif position.x < width_negative:
@@ -42,27 +42,27 @@ func _process(delta):
 	elif position.y < height_negative:
 		direction = Vector2(0, 1)
 		
-	# Aktualizacja prędkości na podstawie kierunku
+	
 	velocity = direction * speed
 	
-	# Poruszanie przeciwnikiem
+
 	move_and_slide()
 
-	# Obracanie przeciwnika w kierunku ruchu
+	
 	if direction != Vector2():
 		rotation = direction.angle()
 
 func change_direction():
-	# Losowanie nowego kierunku
+
 	if width_negative < position.x and position.x < width and height_negative < position.y and position.y < height:
 		var random_dir = randi() % 4
 		change_direction_time = randf_range(1, 8)
 		match random_dir:
 			0:
-				direction = Vector2(1, 0)  # Prawo
+				direction = Vector2(1, 0) 
 			1:
-				direction = Vector2(-1, 0) # Lewo
+				direction = Vector2(-1, 0) 
 			2:
-				direction = Vector2(0, 1)  # Dół
+				direction = Vector2(0, 1)  
 			3:
-				direction = Vector2(0, -1) # Góra
+				direction = Vector2(0, -1)

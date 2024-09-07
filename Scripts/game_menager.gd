@@ -29,16 +29,16 @@ func _ready() -> void:
 	loading_screen = parent.get_node("LoadingScreen")
 	UI = parent.get_node("UI")
 	
-	if Global.show_evolution_bar:
-		progress_bar = progress_bar_scene.instantiate()
-		UI.add_child(progress_bar)
-		print("Progress bar instantiated and added to the scene.")
 	
-		progress_bar.set_stage(1)  # Start with the first stage
-		print("Progress bar set to stage 1.")
+	progress_bar = progress_bar_scene.instantiate()
+	UI.add_child(progress_bar)
+	print("Progress bar instantiated and added to the scene.")
+	
+	progress_bar.set_stage(1)  # Start with the first stage
+	print("Progress bar set to stage 1.")
 	
 	var music = parent.get_node("Music")
-	music.volume_db = Global.float_to_db(Global.MUSIC)
+
 	
 	cursor_texture = load("res://Assets/UI/Coursor/png/coursor.png")
 	Input.set_custom_mouse_cursor(cursor_texture)
@@ -49,10 +49,9 @@ func _ready() -> void:
 		parent.add_child(init)
 		loading_screen.visible = true
 		add_points(100)
-		next_level = true
-		if Global.show_evolution_bar:
-			progress_bar.set_stage(2)  
-			progress_bar.set_value(0, 1)
+		next_level = true	
+		progress_bar.set_stage(2)  
+		progress_bar.set_value(0, 1)
 		print("Starting with fish level, progress bar moved to stage 2 and value set.")
 
 	UI.visible = false
@@ -60,6 +59,37 @@ func _ready() -> void:
 	var start_transition = parent.get_node("StartTransition")
 	start_transition.play("start_transition")
 
+func _process(delta: float) -> void:
+	if Global.show_evolution_bar:
+		if !progress_bar:
+			progress_bar = progress_bar_scene.instantiate()
+			UI.add_child(progress_bar)
+			print("Progress bar instantiated and added to the scene.")
+		
+			if progress_bar:
+				if points <= 99:
+					progress_bar.set_stage(1)
+				else:
+					progress_bar.set_stage(2)
+		
+		if !progress_bar.visible:	
+			progress_bar.visible = true
+	else:
+		if !progress_bar:
+			progress_bar = progress_bar_scene.instantiate()
+			UI.add_child(progress_bar)
+			print("Progress bar instantiated and added to the scene.")
+		
+			if progress_bar:
+				if points <= 99:
+					progress_bar.set_stage(1)
+				else:
+					progress_bar.set_stage(2)
+		
+		if progress_bar.visible:	
+			progress_bar.visible = false
+		
+			
 func add_points(number_of_point):
 	if number_of_point != null:
 		points += number_of_point
@@ -67,26 +97,28 @@ func add_points(number_of_point):
 		player.scale.y += number_of_point * 0.025
 	else:
 		return
-	if Global.show_evolution_bar:
-		if points <= 99:
-			progress_bar.set_value(points, 100)
-		else:
-			progress_bar.set_value(points - 100, 200)
+	
+	if points <= 99:
+		progress_bar.set_value(points, 100)
+	else:
+		progress_bar.set_value(points - 100, 200)
 	
 	if points > 99 and fish_level:
 		if not Global.deep_sea_level_completed:
 			Global.deep_sea_level_completed = true
 		if not Global.sea_level_completed:
 			Global.sea_level_completed = true
+			Global.write_savegame()
 		transform_to_fish_level()
 		player.transform_to_fish()
+		player.set_height_negative()
 		var enemies = get_tree().get_nodes_in_group("cell")
 		for enemy in enemies:
 			enemy.queue_free()
 		fish_level = false
-		if Global.show_evolution_bar:
-			progress_bar.set_stage(2)  
-			progress_bar.set_value(0, 1)
+		
+		progress_bar.set_stage(2)  
+		progress_bar.set_value(0, 1)
 			
 	if points > 299:
 		can_go_to_sky = true

@@ -14,10 +14,7 @@ func play_song():
 	play()
 
 func _on_finished():
-	# Zwiększ indeks piosenki
 	current_song_index += 1
-	# Jeśli indeks jest poza zakresem, wróć do pierwszej piosenki
 	if current_song_index >= songs.size():
 		current_song_index = 0
-	# Odtwarzaj następną piosenkę
 	play_song()

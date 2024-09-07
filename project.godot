@@ -10,9 +10,11 @@ config_version=5
 
 [application]
 
-config/name="GMTK GAME JAM 2024"
+config/name="Evolution Conquers"
+config/version="1.1"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://Assets/UI/Logos/logo.png"
 boot_splash/fullsize=false
 config/icon="res://Assets/Cosmic Cheese.png"
 

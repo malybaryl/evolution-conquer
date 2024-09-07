@@ -8,7 +8,7 @@ func _ready():
 	limit_right = limit_rect.position.x + limit_rect.size.x
 	limit_bottom = limit_rect.position.y + limit_rect.size.y
 
-	make_current()  # Ustawienie tej kamery jako aktualnej
+	make_current()
 
 func _process(delta):
 	if not is_current():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://duc31u1auyym"]
 
-[ext_resource type="Script" path="res://Scenes/big_white_bird.gd" id="1_is1l7"]
+[ext_resource type="Script" path="res://Scripts/big_white_bird.gd" id="1_is1l7"]
 [ext_resource type="SpriteFrames" uid="uid://dcdavsbi8de56" path="res://Animations/Characters/Big_Bird_3/big_bird_3.tres" id="1_vpwj1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lvvao"]

@@ -20,7 +20,6 @@ var end_scene = "res://Scenes/end_screen.tscn"
 func _ready() -> void:
 	parent = get_parent()
 	var music = parent.get_node("Music")
-	music.volume_db = (Global.float_to_db(Global.MUSIC))
 	player = parent.get_node("Player") 
 	camera = player.get_node("Area2D/Camera2DSpace") as Camera2D
 	camera.make_current()
@@ -32,6 +31,7 @@ func _ready() -> void:
 	
 	if not Global.space_level_completed:
 			Global.space_level_completed = true
+			Global.write_savegame()
 			
 	# animations
 	var bg_animation = parent.get_node("Transition")

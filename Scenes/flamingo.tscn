@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://yd3f6vdb4tc8"]
 
 [ext_resource type="SpriteFrames" uid="uid://bv2nsiyahx3l6" path="res://Animations/Characters/Big_Bird_2/big_bird_2_idle.tres" id="1_m7hct"]
-[ext_resource type="Script" path="res://Scenes/flamingo.gd" id="1_oxlhp"]
+[ext_resource type="Script" path="res://Scripts/flamingo.gd" id="1_oxlhp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yyea8"]
 radius = 7.59134

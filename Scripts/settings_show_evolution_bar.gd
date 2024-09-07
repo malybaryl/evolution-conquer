@@ -1,7 +1,5 @@
 extends CheckBox
 
-
-
 func _ready() -> void:
 	button_pressed = Global.show_evolution_bar
 

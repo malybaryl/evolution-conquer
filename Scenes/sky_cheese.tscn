@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cp677glncyeg3"]
 
 [ext_resource type="SpriteFrames" uid="uid://i7dc4dinh68n" path="res://Animations/Objects/Sky Cheese/sky_Cheese.tres" id="1_0c3kk"]
-[ext_resource type="Script" path="res://Scenes/sky_cheese.gd" id="1_o77dw"]
+[ext_resource type="Script" path="res://Scripts/sky_cheese.gd" id="1_o77dw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qjtra"]
 

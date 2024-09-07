@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0w8ci7prh4fs"]
 
-[ext_resource type="Script" path="res://Scenes/ray.gd" id="1_8e6im"]
+[ext_resource type="Script" path="res://Scripts/ray.gd" id="1_8e6im"]
 [ext_resource type="SpriteFrames" uid="uid://cw5xsbf4waug1" path="res://Animations/Characters/Fish_5/Fish_5_idle.tres" id="2_0r8fn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ikemc"]

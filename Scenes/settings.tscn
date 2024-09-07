@@ -1,12 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://brdlcvxvpc7om"]
+[gd_scene load_steps=21 format=3 uid="uid://brdlcvxvpc7om"]
 
-[ext_resource type="Script" path="res://Scenes/settings.gd" id="1_hcfm4"]
+[ext_resource type="Script" path="res://Scripts/settings.gd" id="1_hcfm4"]
 [ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="2_uu38h"]
 [ext_resource type="FontFile" uid="uid://x474cgkwo2ij" path="res://Assets/Fonts/Matemasie-Regular.ttf" id="3_tcqbv"]
-[ext_resource type="Script" path="res://Scenes/label_4.gd" id="4_6aq8q"]
+[ext_resource type="Script" path="res://Scripts/label_4.gd" id="4_6aq8q"]
 [ext_resource type="AudioStream" uid="uid://ccde62p3r7oil" path="res://Assets/Music/deep_sea.mp3" id="4_57f3h"]
 [ext_resource type="Script" path="res://Scripts/settings_show_evolution_bar.gd" id="5_koepq"]
 [ext_resource type="Script" path="res://Scripts/settings_fullscreen.gd" id="5_koy0d"]
+[ext_resource type="AudioStream" uid="uid://cq4c5kuryi3se" path="res://Assets/Audio/choose.ogg" id="8_g30iu"]
 
 [sub_resource type="Animation" id="Animation_y6tmo"]
 length = 0.001
@@ -262,6 +263,7 @@ layout_mode = 2
 
 [node name="Change" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.86
 theme = SubResource("Theme_ul6sw")
@@ -289,6 +291,7 @@ layout_mode = 2
 
 [node name="Change" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.86
 theme = SubResource("Theme_ul6sw")
@@ -388,12 +391,33 @@ autoplay = true
 bus = &"Music"
 parameters/looping = true
 
+[node name="Button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_g30iu")
+bus = &"Sfx"
+
+[connection signal="mouse_entered" from="CanvasLayer/Back" to="." method="_on_back_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Back" to="." method="_on_back_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Credits" to="." method="_on_credits_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer2/HSlider" to="." method="_on_h_slider_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer2/HSlider" to="." method="_on_h_slider_mouse_exited"]
 [connection signal="value_changed" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer2/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="mouse_entered" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/HSlider2" to="." method="_on_h_slider_2_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/HSlider2" to="." method="_on_h_slider_2_mouse_exited"]
 [connection signal="value_changed" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer3/HSlider2" to="." method="_on_h_slider_2_value_changed"]
+[connection signal="mouse_entered" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer/Change" to="." method="_on_change_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer/Change" to="." method="_on_change_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer/Change" to="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer/Label4" method="_on_change_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer4/Change" to="." method="_on_change_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer4/Change" to="." method="_on_change_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/HBoxContainer4/Change" to="." method="_on_change_fullscreen_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/HBoxContainer/VBoxContainer/SAVE" to="." method="_on_save_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HBoxContainer/VBoxContainer/SAVE" to="." method="_on_save_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/SAVE" to="." method="_on_save_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/HBoxContainer/VBoxContainer2/CheckButton" to="." method="_on_check_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HBoxContainer/VBoxContainer2/CheckButton" to="." method="_on_check_button_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer2/CheckButton" to="CanvasLayer/HBoxContainer/VBoxContainer2/CheckButton" method="_on_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/Transition/Transition" to="." method="_on_transition_animation_finished"]
+[connection signal="finished" from="Button" to="." method="_on_button_finished"]

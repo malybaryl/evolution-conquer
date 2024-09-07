@@ -15,6 +15,9 @@ var choose_level_scene = "res://Scenes/choose_level.tscn"
 
 
 func _ready() -> void:
+	# load
+	Global.load_savegame()
+	
 	# display
 	var resolution = Global.resolution
 	var fullscreen = Global.fullscreen
@@ -31,10 +34,18 @@ func _ready() -> void:
 		
 	# audio
 	button_audio = get_node("Button") as AudioStreamPlayer
-	button_audio.volume_db = (Global.float_to_db(Global.SFX))
-	
 	var music = get_node("Music")
-	music.volume_db = (Global.float_to_db(Global.MUSIC))
+	var bus_music = AudioServer.get_bus_index("Music")
+	var bus_sfx = AudioServer.get_bus_index("Sfx")
+
+	AudioServer.set_bus_volume_db(
+		bus_music,
+		linear_to_db(Global.MUSIC)
+		)
+	AudioServer.set_bus_volume_db(
+		bus_sfx,
+		linear_to_db(Global.SFX)
+		)
 	
 	
 	# animations

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://chcsgfrbak037"]
 
-[ext_resource type="Script" path="res://Scenes/narval.gd" id="1_nx67k"]
+[ext_resource type="Script" path="res://Scripts/narval.gd" id="1_nx67k"]
 [ext_resource type="SpriteFrames" uid="uid://b6pl71w2y2n8d" path="res://Animations/Characters/Fish_2/fish_2_idle.tres" id="2_qxvbw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_201yd"]

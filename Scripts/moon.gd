@@ -19,7 +19,7 @@ func  _ready() -> void:
 func _process(delta: float) -> void:
 	if earth:
 		center = earth.position
-		angle += speed * delta  # Aktualizuj kąt na podstawie prędkości i delta czasu
+		angle += speed * delta  
 		var x = center.x + radius * cos(angle)
 		var y = center.y + radius * sin(angle)
 		position = Vector2(x, y)

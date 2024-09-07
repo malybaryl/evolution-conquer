@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 1000  # Prędkość ruchu
+@export var speed: float = 1000 
 
 var animator: AnimationPlayer
 var points: Array = []
@@ -30,8 +30,8 @@ func _ready() -> void:
 		get_node('Points/Point15').position,	
 	]
 
-	position = points[0]  # Ustaw początkową pozycję na pierwszy punkt
-	destiny = points[1]  # Ustaw pierwszy cel na drugi punkt
+	position = points[0]  
+	destiny = points[1]  
 	
 func _process(delta: float) -> void:
 	move_towards_destiny(delta)
@@ -39,11 +39,10 @@ func _process(delta: float) -> void:
 
 func move_towards_destiny(delta: float) -> void:
 	var direction = (destiny - position).normalized()
-	if position.distance_to(destiny) < 10:  # Zmienna 10 może być dostosowana
+	if position.distance_to(destiny) < 10: 
 		current_point_index = (current_point_index + 1) % points.size()
 		destiny = points[current_point_index]
 
-	# Oblicz nowe przemieszczenie
 	var displacement = direction * speed * delta
 	position += displacement
 	

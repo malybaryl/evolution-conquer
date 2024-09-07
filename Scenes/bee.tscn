@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2u1g25u2fv6l"]
 
 [ext_resource type="SpriteFrames" uid="uid://cgics7f80ljlg" path="res://Animations/Characters/Bird_5/bird_5_idle.tres" id="1_kykau"]
-[ext_resource type="Script" path="res://Scenes/bee.gd" id="1_pnoq3"]
+[ext_resource type="Script" path="res://Scripts/bee.gd" id="1_pnoq3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j4a38"]
 radius = 4.18905

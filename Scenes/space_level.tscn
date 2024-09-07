@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://i70yk16ub7it" path="res://Scenes/player.tscn" id="2_m6rr5"]
 [ext_resource type="PackedScene" uid="uid://b3qoucobn5q0x" path="res://Scenes/enemy_generator_space.tscn" id="3_6xs5j"]
 [ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="3_k6r8h"]
-[ext_resource type="Script" path="res://Scenes/enemy_generator_space.gd" id="5_cxuro"]
+[ext_resource type="Script" path="res://Scripts/enemy_generator_space.gd" id="5_cxuro"]
 [ext_resource type="PackedScene" uid="uid://dhatd13s41mnt" path="res://Scenes/earth.tscn" id="6_05bht"]
 [ext_resource type="PackedScene" uid="uid://cbm2m072glq27" path="res://Scenes/space_particles.tscn" id="7_5pejw"]
 [ext_resource type="PackedScene" uid="uid://csggchmcv1d16" path="res://Scenes/mars.tscn" id="7_n24i6"]

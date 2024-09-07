@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="2_o2yhs"]
 [ext_resource type="FontFile" uid="uid://x474cgkwo2ij" path="res://Assets/Fonts/Matemasie-Regular.ttf" id="3_07v6p"]
 [ext_resource type="Texture2D" uid="uid://w2tgsjiwxwlj" path="res://Assets/UI/Logos/mjNkCMp7.png" id="4_klyw7"]
-[ext_resource type="Script" path="res://Scenes/audio_stream_player.gd" id="5_me0n8"]
+[ext_resource type="Script" path="res://Scripts/audio_stream_player.gd" id="5_me0n8"]
 
 [sub_resource type="Animation" id="Animation_y6tmo"]
 length = 0.001

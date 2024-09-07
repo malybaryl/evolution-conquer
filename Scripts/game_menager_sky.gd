@@ -24,7 +24,6 @@ var reload = true
 func _ready() -> void:
 	parent = get_parent()
 	var music = parent.get_node("Music")
-	music.volume_db = (Global.float_to_db(Global.MUSIC))
 	if sky_level:
 		player = parent.get_node("Player") 
 		camera = player.get_node("Area2D/Camera2D") as Camera2D
@@ -46,6 +45,7 @@ func _ready() -> void:
 		
 		if not Global.sky_level_completed:
 			Global.sky_level_completed = true
+			Global.write_savegame()
 		if Global.show_evolution_bar:
 			progress_bar.set_stage(3) 
 		UI.visible = false
@@ -58,6 +58,27 @@ func _process(delta: float) -> void:
 		reload = false
 		if Global.show_evolution_bar:
 			progress_bar.set_stage(3) 
+	
+	if Global.show_evolution_bar:
+		if !progress_bar:
+			progress_bar = progress_bar_scene.instantiate()
+			UI.add_child(progress_bar)
+			print("Progress bar instantiated and added to the scene.")
+		
+			if progress_bar:
+				progress_bar.set_stage(3) 	
+		
+		if !progress_bar.visible:	
+			progress_bar.visible = true
+	else:
+		if !progress_bar:
+			progress_bar = progress_bar_scene.instantiate()
+			UI.add_child(progress_bar)
+			print("Progress bar instantiated and added to the scene.")
+			progress_bar.set_stage(3)
+			
+		if progress_bar.visible:	
+			progress_bar.visible = false
 		
 	
 
@@ -74,7 +95,7 @@ func add_points(number_of_point):
 		progress_bar.set_value(points, 400)
 	
 	if points > 55 and fish_level:
-		# TODO add invicible time
+		player.start_invicible()
 		tranform_sky_level_camera()
 		fish_level = false
 	

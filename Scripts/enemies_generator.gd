@@ -268,8 +268,14 @@ func init_fish(name):
 		init_fish(fish)
 		return
 			
-	inistance.position.x = position_x
-	inistance.position.y = position_y 
+	var cords = player_spawn_radious_node.get_spawn_position()
+	if cords and name != "narval":
+		inistance.position.x = cords[0]
+		inistance.position.y = cords[1]
+	else:
+		inistance.position.x = position_x
+		inistance.position.y = position_y
+		
 	inistance.scale.x = fish_scale
 	inistance.scale.y = fish_scale
 	

@@ -7,7 +7,6 @@ var button_audio
 func _ready() -> void:
 	# audio
 	button_audio = get_node("AudioButton")
-	button_audio.volume_db = (Global.float_to_db(Global.SFX))
 	
 	# animations
 	var bg_animator = get_node("Background_space/AnimationPlayer")

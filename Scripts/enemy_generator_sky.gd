@@ -36,9 +36,13 @@ var Big_White_bird_Scene = preload("res://Scenes/big_white_bird.tscn")
 @export var height = 775
 @export var height_negative = -2900
 
+var player
+var player_spawn_radious_node
+
 func _ready() -> void:
 	parent = get_parent()
-	
+	player = parent.get_node("Player")
+	player_spawn_radious_node = player.get_node("Area2DEnemySpawner")
 	game_menager = parent.get_node("GameMenagerSky") 
 	
 	var enemy_number = 0
@@ -152,7 +156,10 @@ func init_bird(name):
 	else:
 		print("wrong name in: func init_bird(name): EnemyGeneratorSky")
 		
-			
+	var cords = player_spawn_radious_node.get_spawn_position()
+	if cords:
+		inistance.position.x = cords[0]
+		inistance.position.y = cords[1]
 	inistance.position.x = position_x
 	inistance.position.y = position_y 
 	#if game_menager.points < 100:

@@ -8,7 +8,6 @@ var audio
 func _ready() -> void:
 	# audio 
 	audio = get_node("AudioStreamPlayer")
-	audio.volume_db = (Global.float_to_db(Global.MUSIC))
 	
 	# animations
 	var background_animation = get_node("Background_space/AnimationPlayer")

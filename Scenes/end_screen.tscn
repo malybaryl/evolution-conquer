@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=3 uid="uid://didpebieutibp"]
 
 [ext_resource type="Texture2D" uid="uid://c56c01tdxgeqk" path="res://Assets/Characters/Sun/png/1.png" id="1_n3qws"]
-[ext_resource type="Script" path="res://Scenes/end_screen.gd" id="1_nlrvs"]
+[ext_resource type="Script" path="res://Scripts/end_screen.gd" id="1_nlrvs"]
 [ext_resource type="Texture2D" uid="uid://cna1anmxmgydo" path="res://Assets/Characters/Sun/png/0.png" id="2_4wlss"]
 [ext_resource type="SpriteFrames" uid="uid://b5o0pxatckpph" path="res://Animations/Characters/Sun/sun.tres" id="4_y7e4d"]
 [ext_resource type="PackedScene" uid="uid://dq7ayqhtdmkh7" path="res://Scenes/background_space.tscn" id="5_lwhkp"]
-[ext_resource type="Script" path="res://Scenes/audio_stream_player.gd" id="6_jk0w7"]
+[ext_resource type="Script" path="res://Scripts/audio_stream_player.gd" id="6_jk0w7"]
 
 [sub_resource type="Gradient" id="Gradient_vl1sc"]
 colors = PackedColorArray(0.905882, 1, 0, 1, 1, 0.462745, 0, 1)

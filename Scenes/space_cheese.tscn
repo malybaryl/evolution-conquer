@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0l46d2sgngwe"]
 
 [ext_resource type="Texture2D" uid="uid://errb6uu50qhm" path="res://Assets/Objects/Cosmic Cheese/png/Cosmic Cheese.png" id="1_i7vij"]
-[ext_resource type="Script" path="res://Scenes/space_cheese.gd" id="1_uc1c4"]
+[ext_resource type="Script" path="res://Scripts/space_cheese.gd" id="1_uc1c4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8si42"]
 
