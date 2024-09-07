@@ -17,7 +17,6 @@ var choose_level_scene = "res://Scenes/choose_level.tscn"
 func _ready() -> void:
 	# load
 	Global.load_savegame()
-	Global.fullscreen = true
 	
 	# display
 	var resolution = Global.resolution
