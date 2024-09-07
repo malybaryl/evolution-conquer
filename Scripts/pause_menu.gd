@@ -72,7 +72,7 @@ func _on_h_slider_2_value_changed(value: float) -> void:
 				linear_to_db(value)
 			)
 	if !ready_bus_sfx:
-		ready_bus_music = true
+		ready_bus_sfx = true
 	Global.write_savegame()
 
 
