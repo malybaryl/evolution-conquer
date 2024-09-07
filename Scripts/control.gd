@@ -14,7 +14,6 @@ func _ready() -> void:
 	
 	if play_music:
 		var music = get_node("AudioStreamPlayer")
-		music.volume_db = (Global.float_to_db(Global.MUSIC))
 		music.play_song()
 	
 	var credits_animation = get_node("CreditsAnimation")

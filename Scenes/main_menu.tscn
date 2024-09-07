@@ -1459,7 +1459,6 @@ libraries = {
 }
 
 [node name="Transition" type="Sprite2D" parent="PlayTransition"]
-visible = false
 modulate = Color(0, 0, 0, 1)
 position = Vector2(921, 538)
 scale = Vector2(2163, 1076)
