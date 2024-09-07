@@ -29,15 +29,15 @@ func _ready() -> void:
 	transition.play("transition")
 	bus_music = AudioServer.get_bus_index("Music")
 	bus_sfx = AudioServer.get_bus_index("Sfx")
-	if Global.fullscreen:
-		fullscreen_node.text = 'fullscreen'
-		resolution_node.disabled = true
-		resolution_text_node.text = "------"
-	else:
-		fullscreen_node.text = 'windowed'
-		resolution_node.disabled = false
 	
-
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("fullscreen"):
+			Global.fullscreen = !Global.fullscreen
+			if Global.fullscreen:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			else:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func _on_back_pressed() -> void:
 	cliked_back_button = true

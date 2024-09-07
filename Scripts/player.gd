@@ -153,10 +153,17 @@ func pauseMenu():
 	paused = !paused
 
 func _process(delta):
+	if Input.is_action_just_pressed("fullscreen"):
+			Global.fullscreen = !Global.fullscreen
+			if Global.fullscreen:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			else:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	if not invicible:
 		# pause menu
 		if Input.is_action_just_pressed("pause"):
 			pauseMenu()
+		
 		
 		# other stuff
 		var mouse_position = get_global_mouse_position()

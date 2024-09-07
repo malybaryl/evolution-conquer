@@ -60,6 +60,7 @@ func _ready() -> void:
 	start_transition.play("start_transition")
 
 func _process(delta: float) -> void:
+	
 	if Global.show_evolution_bar:
 		if !progress_bar:
 			progress_bar = progress_bar_scene.instantiate()

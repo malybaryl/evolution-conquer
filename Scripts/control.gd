@@ -14,13 +14,18 @@ func _ready() -> void:
 	
 	if play_music:
 		var music = get_node("AudioStreamPlayer")
-		music.volume_db = (Global.float_to_db(Global.MUSIC))
 		music.play_song()
 	
 	var credits_animation = get_node("CreditsAnimation")
 	credits_animation.play("credits_animation")
 	
-
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("fullscreen"):
+			Global.fullscreen = !Global.fullscreen
+			if Global.fullscreen:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			else:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file(main_menu_scene_str)

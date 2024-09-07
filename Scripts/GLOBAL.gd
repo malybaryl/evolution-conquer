@@ -19,7 +19,7 @@ var show_evolution_bar: bool = true
 
 var savegame_path: String = "user://savegame.cfg"
 
-	
+
 
 func write_savegame() -> void:
 	var config = ConfigFile.new()
